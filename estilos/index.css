@@ -62,7 +62,7 @@ h1, h2{
 
 .portada {
   min-height: 90vh;
-  background: url("https://tse4.mm.bing.net/th/id/OIP.jOaZd264MlG9H45h_hAByQHaFj?rs=1&pid=ImgDetMain&o=7&rm=3") no-repeat center top;
+  background: url("https://st.depositphotos.com/1915897/4148/i/950/depositphotos_41483009-stock-photo-waiting-area-and-surgery-rooms.jpg") no-repeat center top;
   background-color:#f4f4f4;
   background-size: cover;
   display: flex;
@@ -161,5 +161,14 @@ h1, h2{
   padding: 15px;
   font-weight: 600;
   font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+
+}
+.pie_de_portada a {
   
+  text-decoration: none;
+}
+
+.pie_de_portada a:hover {
+  text-decoration: underline;
 }
