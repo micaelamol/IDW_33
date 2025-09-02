@@ -1,1 +1,47 @@
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+li {
+  display: inline;
+  margin-right: 20px;
+}
+li a {
+  color: antiquewhite;
+  text-decoration:none  
+}
+li a:hover {
+  color: #141414;}
+
+
+header {
+  background-color: #31a387;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #c0b6b69f;
+  color: #080303;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 
