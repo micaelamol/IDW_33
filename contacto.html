@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Centro Médico Salud+</title>
+    <link rel="stylesheet" href="estilos/contacto.css">
+</head>
+<body>
+
+    <header>
+        <h1>Vital Consultorios</h1>
+        <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="institucional.html">Institucional</a></li>
+    </ul>
+  </nav>
+    </header>
+
+    <main>
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>Dejanos tu mensaje y te responderemos lo antes posible.</p>
+
+            <!-- Formulario de contacto -->
+            <form action="enviar.php" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="telefono" id="telefono" name="telefono" required>
+    
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+
+            <!-- Datos de contacto -->
+            <div class="info-contacto">
+                <h3>También puedes comunicarte por:</h3>
+                <p><strong>Dirección:</strong> Alameda de la Federación 520 - Paraná - Entre Ríos - Argentina</p>
+                <p><strong>Teléfono:</strong> +54 0343 4232828</p>
+                <p><strong>Email:</strong> contacto@vitalconsulorios.com.ar</p>
+                <p><strong>WhatsApp:</strong> +54 3434232828</p>
+                <p><strong>Instagram:</strong> @vitalconsulorios</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="map">
+      <iframe   
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.776807253814!2d-60.53669452531154!3d-31.72199131108982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b452618aba1279%3A0xdbc992b20dabd8da!2sAlameda%20de%20la%20Federaci%C3%B3n%20520%2C%20E3100%20Paran%C3%A1%2C%20Entre%20R%C3%ADos!5e0!3m2!1ses-419!2sar!4v1756828555774!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      loading="lazy">
+      </iframe>
+    </div>
+
+    <footer>
+         <p>&copy; 2025 Vital Consultorios. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
+
