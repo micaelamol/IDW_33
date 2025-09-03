@@ -3,39 +3,51 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 ul {
   list-style-type: none;
   padding-left: 0;
   margin: 0;
 }
-
+h1 {
+  font-size: 50px;     
+  font-weight: bold;   
+  margin: 0;           
+}
 li {
   display: inline;
   margin-right: 20px;
 }
 li a {
+  font-size: 18px;
   color: antiquewhite;
   text-decoration:none  
 }
 li a:hover {
   color: #141414;}
-
-
 header {
   background-color: #31a387;
   color: white;
   padding: 20px;
   text-align: center;
 }
-
+header {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  padding: 10px 20px;
+}
+.logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 20%; 
+  object-fit: cover;
+}
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   background-color: #c0b6b69f;
   color: #080303;
   line-height: 1.6;
 }
-
 main {
   max-width: 800px;
   margin: 40px auto;
