@@ -1,7 +1,7 @@
 /* parte superior */
 .encabezado{
  
-  background: #d4e7f3;
+  background:#31a387;
   color: rgb(12, 1, 3);
   display: flex;
   justify-content: space-between;
@@ -155,7 +155,7 @@ h1, h2{
 /*Footer*/
 .pie_de_portada {
   
-  background:#d4e7f3;
+  background:#31a387;
   color: #003366;
   text-align: center;
   padding: 15px;
