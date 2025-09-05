@@ -1,5 +1,5 @@
 
-/* Estilos generales */
+
 body {
     background-color: #f7f9fc;
     color: #333;
@@ -53,7 +53,7 @@ li a {
 li a:hover {
   color: #141414;}
 
-/* Formulario */
+
 form {
     display: flex;
     flex-direction: column;
@@ -88,7 +88,7 @@ button:hover {
     background-color: #e68a00;
 }
 
-/* Información de contacto */
+
 .info-contacto {
     background: #f7f9fc;
     padding: 15px;
@@ -104,16 +104,26 @@ button:hover {
 footer {
     text-align:center;
     padding: 15px;
-    margin-top: 30px;
     background: #31a387;
-    color: white;
-    margin-top: 30px;        
-    
+    color: #003366;    
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;   
+}
+
+
+footer a {
+    text-decoration: none;
+}
+
+
+footer b :hover {
+    text-decoration: underline;
 }
 
 .map {
-  margin-top: 40px;
-  text-align: center;
+    margin-top: 40px;
+    text-align: center;
 }
 
 
