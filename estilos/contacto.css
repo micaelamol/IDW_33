@@ -129,8 +129,11 @@ footer {
   padding: 15px;
   margin-top: 30px;
   background: #31a387;
-  color: white;
+  color: #003366;
   margin-top: 30px;
+  font-weight: 100;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.2;
 }
 
 .map {

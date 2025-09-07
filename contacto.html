@@ -6,23 +6,28 @@
     <title>Contacto - Centro Médico Salud+</title>
     <link rel="stylesheet" href="estilos/contacto.css" />
   </head>
-  <body>
-    <header class="encabezado">
-      <img
-        src="imagenes/Logo.jpg"
-        height="200"
-        width="200px"
-        style="padding: 5px; margin: 0 0 0 70px"
-      />
-      <div class="titulo_principal">
-        <h1>Vital Consultorios</h1>
-        <h2>Salud Médica Integral</h2>
-      </div>
+   <title>Vital Consultorios - Salud Médica Integral </title>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="stylesheet" href="estilos/index.css"> 
+                </head>
+                <body>
+                    <header class="encabezado">
+                        <img src="imagenes/Logo.jpg" alt="Logo Vital Consultorios"
+                                style="height: 200px; 
+                                padding: 5px; 
+                                margin-left: 50px; 
+                                border-radius: 50px; 
+                                border: 2px solid #48794a; 
+                                background-color:white;">
+                        <div class="titulo_principal">
+                            <h1> Vital Consultorios</h1>
+                            <h2> Salud Médica Integral</h2>
+                        </div>
       <nav class="menu_principal">
         <ul>
           <li><a href="index.html">Inicio</a></li>
           <li><a href="institucional.html">institucional</a></li>
-          <li><a href="contacto.html">contacto</a></li>
         </ul>
       </nav>
     </header>
@@ -41,6 +46,9 @@
 
           <label for="telefono">Teléfono:</label>
           <input type="telefono" id="telefono" name="telefono" required />
+            
+          <label for="mensaje">Mensaje:</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
 
                 <button type="submit">Enviar</button>
             </form>
