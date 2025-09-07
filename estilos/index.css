@@ -1,15 +1,11 @@
-
-
-
 /* parte superior */
 
-body{
+body {
   margin: 0;
   padding: 0;
 }
-.encabezado{rgb (215, 214, 215);
- 
-  background:#31a387;
+.encabezado {
+  background: #31a387;
   color: rgb(12, 1, 3);
   display: flex;
   justify-content: space-between;
@@ -21,74 +17,73 @@ body{
   z-index: 1000;
 }
 
-.titulo_principal{
- font-family: "roboto", sans-serif;
- text-align: center;
-  color: white;
+.titulo_principal {
+  font-family: "roboto", sans-serif;
+  text-align: center;
+  color: #0b6eb9;
   align-items: center;
   flex: 1;
-  font-size: 20px;
-  font-weight: 25;
-  
- 
 }
 
-
-h1, h2{
+.titulo_principal h1 {
+  font-family: sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+}
+h1,
+h2 {
   text-align: center;
 }
 .titulo_principal h2 {
   font-family: sans-serif;
-  font-size: 25px;
-  font-weight: 500;
-  color:white;
+  font-size: 30px;
+  font-weight: 550;
+  color: #2e8b57;
 }
 
 .menu_principal ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-   
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 .menu_principal a {
-    font-family: sans-serif;
-    color:white;
-    padding: 8px 12px;
-    white-space: nowrap;
-    text-decoration: none;
-    font-weight: 600
-
+  font-family: sans-serif;
+  color: #0b6eb9;
+  padding: 8px 12px;
+  white-space: nowrap;
+  text-decoration: none;
+  font-weight: 600;
 }
-.menu_principal a:hover{
-    text-decoration: underline;
+.menu_principal a:hover {
+  text-decoration: underline;
 }
 
 /*Portada*/
 
 .portada {
   min-height: 90vh;
-  background: url("https://st.depositphotos.com/1915897/4148/i/950/depositphotos_41483009-stock-photo-waiting-area-and-surgery-rooms.jpg") no-repeat center top;
-  background-color:#f4f4f4;
+  background: url("https://st.depositphotos.com/1915897/4148/i/950/depositphotos_41483009-stock-photo-waiting-area-and-surgery-rooms.jpg")
+    no-repeat center top;
+  background-color: #f4f4f4;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-top: 80px; 
-  
+  margin-top: 80px;
 }
 
-
-.portada h3, .portada p {
+.portada h3,
+.portada p {
   background: rgb(217, 238, 244);
   padding: 10px 15px;
   border-radius: 8px;
 
   color: #333333;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .portada h3 {
@@ -103,8 +98,6 @@ h1, h2{
   margin: 0 auto;
 }
 
-
-
 /* turnos */
 .Turnos {
   position: relative;
@@ -116,7 +109,7 @@ h1, h2{
   color: white;
   text-decoration: none;
   font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   border-radius: 5px;
   transition: background 0.3s ease;
 }
@@ -135,7 +128,7 @@ h1, h2{
 .especialidades h3 {
   margin-bottom: 50px;
   font-size: 26px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #24495c;
 }
 
@@ -145,10 +138,9 @@ h1, h2{
   display: inline-block;
   color: #070500;
   font-weight: 600;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   text-decoration: none;
   border: none;
-  
 }
 
 .seccion_especialidades a:hover {
@@ -160,21 +152,17 @@ h1, h2{
   text-underline-offset: 3px;
 }
 
-
 /*Footer*/
 .pie_de_portada {
-  
-  background:#31a387;
+  background: #d4e7f3;
   color: #003366;
   text-align: center;
   padding: 15px;
   font-weight: 600;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   line-height: 1.5;
-
 }
 .pie_de_portada a {
-  
   text-decoration: none;
 }
 

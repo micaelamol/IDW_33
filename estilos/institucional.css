@@ -1,4 +1,4 @@
-{
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -45,3 +45,8 @@ main {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+section p{
+  border: 1px solid #a2e6d5;
+  border-radius: 2px;
+  box-shadow: 5px 6px 23px #b7e9dc;
+}
