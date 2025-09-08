@@ -1,3 +1,5 @@
+
+
 /* Estilos generales */
 body {
   margin: 0;
@@ -73,10 +75,7 @@ li a:hover {
   color: #141414;
 }
 
-/* nav li {
-    color: #0b6eb9;
-} */
-/* Formulario */
+
 form {
   display: flex;
   flex-direction: column;
@@ -112,7 +111,7 @@ button:hover {
   background-color: #e68a00;
 }
 
-/* Información de contacto */
+
 .info-contacto {
   background: #f7f9fc;
   padding: 15px;
@@ -130,11 +129,14 @@ footer {
   padding: 15px;
   margin-top: 30px;
   background: #31a387;
-  color: white;
+  color: #003366;
   margin-top: 30px;
+  font-weight: 100;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.2;
 }
 
 .map {
-  margin-top: 40px;
-  text-align: center;
+    margin-top: 40px;
+    text-align: center;
 }

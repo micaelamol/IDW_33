@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 /* ENCABEZADO  */
 .encabezado {
   background: #31a387;
@@ -12,6 +16,14 @@
   z-index: 1000;
 }
 
+header img {
+  height: 200px;
+  padding: 5px;
+  margin-left: 50px;
+  border-radius: 50px;
+  border: 2px solid #48794a;
+  background-color: white;
+}
 .titulo_principal {
   font-family: "Roboto", sans-serif;
   text-align: center;
@@ -31,7 +43,8 @@
   color: white;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
 }
 
@@ -59,7 +72,8 @@ h1, h2 {
 /* PORTADA */
 .portada {
   min-height: 90vh;
-  background: url("https://st.depositphotos.com/1915897/4148/i/950/depositphotos_41483009-stock-photo-waiting-area-and-surgery-rooms.jpg") no-repeat center top;
+  background: url("https://st.depositphotos.com/1915897/4148/i/950/depositphotos_41483009-stock-photo-waiting-area-and-surgery-rooms.jpg")
+    no-repeat center top;
   background-color: #f4f4f4;
   background-size: cover;
   display: flex;
@@ -75,7 +89,7 @@ h1, h2 {
   padding: 10px 15px;
   border-radius: 8px;
   color: #333333;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .portada h3 {
@@ -99,7 +113,7 @@ h1, h2 {
   color: white;
   text-decoration: none;
   font-weight: 600;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   border-radius: 5px;
 }
 
@@ -112,7 +126,7 @@ section.obras_sociales {
   background: white;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
 }
 
@@ -155,7 +169,7 @@ ul.obras_sociales li {
   font-weight: 700;
   color: #003366;
   margin: 40px auto 20px auto;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .especialistas {
@@ -171,7 +185,7 @@ ul.obras_sociales li {
   height: 350px;
   background-color: #6cdbbf;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 15px;
   text-align: center;
   display: flex;
@@ -205,7 +219,7 @@ ul.obras_sociales li {
   text-align: center;
   padding: 15px;
   font-weight: 100;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   line-height: 1.2;
 }
 

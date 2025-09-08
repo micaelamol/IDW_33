@@ -1,52 +1,130 @@
-*{
+/* ===================== establece estilos al body ===========================*/
+
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #c0b6b69f;
+  color: #080303;
+  line-height: 1.6;
+}
+/*====================== establece estilos al header ========================*/
+
+header img {
+  height: 200px;
+  padding: 5px;
+  margin-left: 50px;
+  border-radius: 50px;
+  border: 2px solid #48794a;
+  background-color: white;
 }
 
-ul {
-  list-style-type: none;
-  padding-left: 0;
+.encabezado {
+  background: #31a387;
+  color: rgb(12, 1, 3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 3px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  line-height: 1;
+}
+
+.titulo_principal {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  color: white;
+  align-items: center;
+  flex: 1;
+}
+
+.titulo_principal h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.titulo_principal h2 {
+  font-size: 30px;
+  font-weight: 550;
+  color: white;
+}
+
+
+.menu_principal ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
   margin: 0;
+  padding: 0;
+}
+
+.menu_principal a {
+  font-family: sans-serif;
+  color: #0a127a;
+  padding: 8px 12px;
+  white-space: nowrap;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 li {
   display: inline;
   margin-right: 20px;
 }
-li a {
-  color: antiquewhite;
-  text-decoration:none  
-}
+
 li a:hover {
-  color: #141414;}
-
-
-header {
-  background-color: #31a387;
-  color: white;
-  padding: 20px;
-  text-align: center;
+  /* color: #141414; */
+  text-decoration: underline;
 }
 
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #c0b6b69f;
-  color: #080303;
-  line-height: 1.6;
-}
+/*====================== establece estilos al main ========================*/
 
 main {
+  position: relative;
+  top: 192px;
   max-width: 800px;
   margin: 40px auto;
   padding: 0 20px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-section p{
+section {
+  padding-bottom: 1px;
+}
+
+section p {
+  font-family: "Segoe UI", Arial, sans-serif;
   border: 1px solid #a2e6d5;
   border-radius: 2px;
   box-shadow: 5px 6px 23px #b7e9dc;
+}
+section p:last-child {
+  margin-bottom: 30px;
+  /* background-color: #003366; */
+}
+
+/*====================== establece estilos al footer ========================*/
+
+.pie_de_portada {
+  margin-top: 226px;
+  background: #31a387;
+  color: #003366;
+  text-align: center;
+  padding: 15px;
+  font-weight: 100;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.2;
+}
+
+.pie_de_portada a {
+  text-decoration: none;
+}
+
+.pie_de_portada a:hover {
+  text-decoration: underline;
 }
