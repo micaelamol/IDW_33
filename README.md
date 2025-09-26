@@ -1,4 +1,4 @@
-# idw_2025-tp-final-grupo_33
+# IDW_33
 Repositorio para la clase IDW
 
 ## Integrantes del grupo 33
