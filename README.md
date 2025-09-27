@@ -47,6 +47,9 @@ Qué se hizo:
 Portada atractiva:
 -Con imagen de fondo, mensaje de bienvenida y botón para solicitar turnos.
 
+Obras sociales:
+- En cada obra social se utilizó clases de Bootstrap para construir una estructura responsiva
+
 Catálogo del equipo médico:
 -Cada profesional tiene su propia tarjeta (card) con foto, nombre y especialidad. Las cards -están organizadas en una grilla responsive que se adapta a celulares, tablets y computadoras.
 
