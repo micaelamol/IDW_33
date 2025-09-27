@@ -30,7 +30,8 @@ div a img{
 }
 
 .card-img-top {
-  height: 250px;
+  aspect-ratio: 3 / 4;
+  width: 100%;
   object-fit: cover;
   object-position: top;
   background-color: #68d9bd;
@@ -200,8 +201,10 @@ body.dark-mode {
     font-size: 0.9rem;
     padding: 8px 10px;
   }
+   
   .card-img-top {
-    height: 180px; 
+    aspect-ratio: 3 / 4;
+    height: auto;
   }
 }
 
