@@ -71,37 +71,25 @@ div a img{
 
 /*  OBRAS SOCIALES*/
 section.obras_sociales {
-  background: #fff;
+  background-color: #fff;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 section.obras_sociales h3 {
-  color: rgb(34, 24, 138);
+  color:#003366;
   font-size: 1.5em;
   margin-bottom: 15px;
-  text-align: center;
+  
+  font-weight: 700;
 }
-
-ul.obras_sociales {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  justify-content: center;
-}
-
-ul.obras_sociales li {
-  background: #31a387;
-  padding: 6px 10px;
-  border-radius: 4px;
-  color: white;
+.obras_sociales button {
+  min-width: 120px;
   font-weight: 500;
 }
+
 
 /* EQUIPO MÉDICO */
 .equipo_medico {
