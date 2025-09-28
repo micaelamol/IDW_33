@@ -1,6 +1,5 @@
 
-
-/* Estilos generales */
+/* Estilos body */
 body {
   margin: 0;
   padding: 0;
@@ -9,12 +8,19 @@ body {
   line-height: 1.6;
 }
 
-header {
-  background-color: #31a387;
-  color: white;
-  text-align: center;
-  padding: 20px;
+
+
+/* Estilos header */
+
+header img {
+  height: 200px;
+  padding: 5px;
+  margin-left: 50px;
+  border-radius: 50px;
+  border: 2px solid #48794a;
+  background-color: white;
 }
+
 
 .encabezado {
   background: #31a387;
@@ -25,40 +31,58 @@ header {
   padding: 5px 3px;
   position: fixed;
   top: 0;
-  width: 99%;
+  width: 100%;
   z-index: 1000;
-  color: #0b6eb9;
+  line-height: 1;  
 }
 
-main {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: "Segoe UI", Arial, sans-serif;
-  color: #080303;
-  position: relative;
-  top: 212px;
-}
 
-h2 {
+.titulo_principal {
+  font-family: "Roboto", sans-serif;
   text-align: center;
-  margin-bottom: 10px;
-  color: #2e8b57;;
+  color: white;
+  align-items: center;
+  flex: 1;
 }
 
-p {
-  text-align: center;
-  margin-bottom: 20px;
+.titulo_principal h1  {
+  font-size: 40px;
+  font-weight: 700;
 }
 
-ul {
-  list-style-type: none;
-  padding-left: 0;
+
+.titulo_principal h2 {
+  font-size: 30px;
+  font-weight: 550;
+  color: white;
+}
+
+
+.menu_principal ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
   margin: 0;
+  padding: 0;
 }
+
+
+.menu_principal {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.menu_principal a {
+  font-family: sans-serif;
+  color: #0a127a;
+  padding: 8px 12px;
+  white-space: nowrap;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 
 li {
   display: inline;
@@ -66,26 +90,51 @@ li {
   
 }
 
-li a {
-  color: antiquewhite;
-  text-decoration: none;
-  color: #0b6eb9;
-}
+
 li a:hover {
   color: #141414;
 }
 
 
+main {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  padding-top: 240px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #080303;
+  
+}
+
+
+.menu_toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+
+
+/* Estilos formulario contacto*/
+
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-bottom: 25px;
+ 
 }
 
+
 label {
-  font-weight: bold;
-  text-align: left;
+  font-weight: 600;
+ 
 }
 
 input,
@@ -104,13 +153,14 @@ button {
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: bold;
 }
+
+
 
 button:hover {
   background-color: #e68a00;
 }
-
 
 .info-contacto {
   background: #f7f9fc;
@@ -135,7 +185,50 @@ footer {
   line-height: 1.2;
 }
 
-.map {
-    margin-top: 40px;
-    text-align: center;
+
+.mapa {
+  margin-top: 40px;
+  text-align: center;
 }
+
+
+.mapa iframe {
+  width: 100%;
+  height: 500px;     
+  border: 0;
+  border-radius: 8px; 
+}
+
+
+  .menu_items {
+    display: none;
+    flex-direction: column;
+    background-color: #31a387;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  }
+
+  .menu_items.show {
+    display: flex;
+  }
+
+  .menu_items li {
+    margin: 0;
+    border-bottom: 1px solid #ffffff33;
+  }
+
+  .menu_items a {
+    color: white;
+    padding: 12px;
+    display: block;
+  }
+
+  .menu_items a:hover {
+    background-color: #21816c;
+  }
+
+
