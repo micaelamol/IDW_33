@@ -9,15 +9,22 @@ body {
   line-height: 1.6;
 }
 /*====================== establece estilos al header ========================*/
-
-header img {
-  height: 200px;
+.navbar-principal {
+  background-color: #31a387;
+  color: #ffffff;
+}
+div a img{
+  width: 80px;
+}
+/*div a img {
+   height: 200px;
   padding: 5px;
   margin-left: 50px;
   border-radius: 50%;
   border: 2px solid #48794a;
   background-color: white;
-}
+} */
+
 
 .encabezado {
   margin: 0;
