@@ -1,5 +1,4 @@
 
-
 /* Estilos body */
 body {
   margin: 0;
@@ -85,12 +84,41 @@ main {
 
 /* Estilos formulario contacto*/
 
+main {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  padding-top: 240px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #080303;
+  
+}
+
+
+.menu_toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+
+
+/* Estilos formulario contacto*/
+
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
  
 }
+
 
 label {
   font-weight: 600;
