@@ -4,23 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Institucional</title>
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="estilos/institucional.css" />
   </head>
   <body>
-    <header class="encabezado container-fluid d-flex ">
-      <img class=""
+    <header class="encabezado row">
+      <img class="col-sm-12" alt="Logo Vital Consultorios"
         src="imagenes/Logo.jpg"
       />
-      <div class="titulo_principal">
+      <div class="titulo_principal col-12 col-sm-12 col-md-12 align-items-center">
         <h1>Vital Consultorios</h1>
         <h2>Salud Médica Integral</h2>
       </div>
-      <nav class="menu_principal nav-collapse-sm">
-        <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="contacto.html">contacto</a></li>
-        </ul>
-      </nav>
+      <nav class="navbar navbar-expand-lg navbar-collapse-md col-sm-12 col-md-12 col-lg-4 navbar-dark bg-vital">
+          <div class="container">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#menuPrincipal"
+              aria-controls="menuPrincipal"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link enlace-personalizado" href="index.html"
+                    >Inicio</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link enlace-personalizado" href="contacto.html"
+                    >Contacto</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
     </header>
 
     <main>
@@ -59,5 +84,6 @@
       <!-- <p>Email: contacto@vitalconsultorios.com.ar</p> -->
       <p>Instagram: <a href="https://www.instagram.com/vitalconsultorios" target="_blank">@vitalconsultorios</a></p>
     </footer>
+
   </body>
 </html>

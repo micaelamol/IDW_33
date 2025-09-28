@@ -20,6 +20,7 @@ header img {
 }
 
 .encabezado {
+  margin: 0;
   background: #31a387;
   color: rgb(12, 1, 3);
   display: flex;
