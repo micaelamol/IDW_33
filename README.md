@@ -1,4 +1,4 @@
-# idw_2025-tp-final-grupo_33
+# IDW_33
 Repositorio para la clase IDW
 
 ## Integrantes del grupo 33
@@ -37,3 +37,28 @@ El desarrollo se realizó en equipo
 - Uso de GitHub para sincronizar cambios 
 - Correcciones visuales y semánticas aplicadas en conjunto  
 - Organización de carpetas y archivos  
+
+## TP2: 2da ETAPA TRABAJO FINAL INTEGRADOR 
+Qué se hizo:
+
+-Navbar responsiva:
+-Incluye todas las secciones del sitio y funciona correctamente en computadoras y dispositivos -móviles gracias al menú hamburguesa.
+
+Portada atractiva:
+-Con imagen de fondo, mensaje de bienvenida y botón para solicitar turnos.
+
+Obras sociales:
+- En cada obra social se utilizó clases de Bootstrap para construir una estructura responsiva
+
+Catálogo del equipo médico:
+-Cada profesional tiene su propia tarjeta (card) con foto, nombre y especialidad. Las cards -están organizadas en una grilla responsive que se adapta a celulares, tablets y computadoras.
+
+Modo oscuro:
+Los usuarios pueden alternar entre modo claro y oscuro con un botón flotante.
+
+Footer:
+Contiene información de contacto, dirección, teléfono, email e Instagram del centro.
+
+Tecnologías utilizadas
+-HTML5 y CSS3.
+-Bootstrap 5 para grillas, cards, navbar y responsividad
