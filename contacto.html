@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacto - Vital Consultorios - Salud Médica Integral </title>
-    <link rel="stylesheet" href="estilos/contacto.css" />
     <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
-  
+    <link rel="stylesheet" href="estilos/contacto.css" />
+   
   </head>
   <body>
+    <header>
       <nav class="navbar navbar-principal fixed-top shadow-sm navbar-principal navbar-expand-sm">
     <div class="container-fluid">
       <a class="navbar-brand" href="contacto.html">
@@ -28,6 +29,7 @@
       </div>
     </div>
   </nav>
+  </header>
 
     <main>
       <section id="contacto">
@@ -46,9 +48,11 @@
           <label for="mensaje">Mensaje:</label>
           <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
 
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+       
+   
         <section id="ubicacion" class="mapa">
           <h2>Ubicación</h2>
           <iframe
@@ -60,11 +64,13 @@
         </section>
     </main>
 
+    
     <footer class="pie_de_portada">
         <p>&copy; 2025 Vital Consultorios. Todos los derechos reservados.</p>
         <p>Dirección: Alameda de la Federación 520 - Paraná - Entre Ríos - Argentina</p>
         <p>Teléfono: +54 0343 4232828 | Email: <a href="mailto:contacto@vitalconsultorios.com.ar">contacto@vitalconsultorios.com.ar</a></p>
         <p>Instagram: <a href="https://www.instagram.com/vitalconsultorios" target="_blank">@vitalconsultorios</a></p>
     </footer>
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
