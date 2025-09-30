@@ -1,91 +1,69 @@
 
-
-/* Estilos generales */
+/* ===================== Body =========================== */
 body {
   margin: 0;
   padding: 0;
-  background-color: #f7f9fc;
+  background-color: #c0b6b69f;
   color: #333;
   line-height: 1.6;
+  font-family: 'Open Sans', Arial, sans-serif;
 }
 
-header {
+/* ===================== Header ======================== */
+.navbar-brand img {
+  width: 80px;
+  border-radius: 50%;
+}
+
+.navbar-nav .nav-link {
+  color: #eff2f5;
+  transition: color 0.3s ease;
+}
+
+.navbar-principal {
   background-color: #31a387;
+  color: #ffffff;
+}
+
+.titulo-navbar {
   color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-.encabezado {
-  background: #31a387;
-  color: rgb(12, 1, 3);
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 15px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 5px 3px;
-  position: fixed;
-  top: 0;
-  width: 99%;
-  z-index: 1000;
-  color: #0b6eb9;
 }
 
+.navbar-nav .nav-link:hover {
+  color: #080303;
+}
+
+/* ===================== Main ======================== */
 main {
   max-width: 700px;
   margin: 30px auto;
   padding: 20px;
+  padding-top: 100px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: "Segoe UI", Arial, sans-serif;
   color: #080303;
-  position: relative;
-  top: 212px;
+  text-align: justify;
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 10px;
-  color: #2e8b57;;
 }
 
-p {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-ul {
-  list-style-type: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-li {
-  display: inline;
-  margin-right: 20px;
-  
-}
-
-li a {
-  color: antiquewhite;
-  text-decoration: none;
-  color: #0b6eb9;
-}
-li a:hover {
-  color: #141414;
-}
-
-
+/* ===================== Formulario ======================== */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-bottom: 25px;
 }
 
 label {
-  font-weight: bold;
-  text-align: left;
+  font-weight: 600;
 }
 
 input,
@@ -96,46 +74,117 @@ textarea {
   font-size: 1rem;
 }
 
-button {
-  background-color: #ff9800;
+.custom-btn {
+  background-color: #31a387;
   color: white;
-  padding: 12px;
   border: none;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  padding: 12px;
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-button:hover {
+.custom-btn:hover {
   background-color: #e68a00;
 }
 
-
-.info-contacto {
-  background: #f7f9fc;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.info-contacto h3 {
-  margin-bottom: 10px;
-  color: #080303;
-}
-
-footer {
-  text-align: center;
-  padding: 7px;
-  margin-top: 30px;
+/* ===================== Footer ======================== */
+.pie_de_portada {
   background: #31a387;
-  color: #003366;
+  text-align: center;
+  padding: 15px;
+  color: #fff;
   font-weight: 100;
   font-family: 'Open Sans', sans-serif;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
-.map {
-    margin-top: 40px;
-    text-align: center;
+.pie_de_portada a {
+  color: #081d85;
+  text-decoration: none;
+  font-weight: bold;
 }
+
+/* ===================== Mapa ======================== */
+.mapa iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+  border-radius: 8px;
+}
+
+/* ===================== Igualar altura columnas ================== */
+.row-equal {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row-equal > .col-md-6 {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-equal > .col-md-6 section {
+  flex: 1;
+}
+
+@media (max-width: 767px) {
+  .row-equal,
+  .row-equal > .col-md-6,
+  .row-equal > .col-md-6 section {
+    display: block;
+    flex: none;
+  }
+}
+
+/* ===================== Responsive ================== */
+@media (max-width: 768px) {
+  main {
+    max-width: 90%;
+    padding: 15px;
+    margin-top: 80px;
+  }
+
+  input,
+  textarea,
+  button {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .mapa iframe {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    max-width: 95%;
+    padding: 10px;
+    margin-top: 70px;
+  }
+
+  h1, h2 {
+    font-size: 1.3rem;
+  }
+
+  input,
+  textarea,
+  button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .mapa iframe {
+    height: 300px;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+}
+
+
