@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f7f9fc;
+  background-color: #c0b6b69f;
   color: #333;
   line-height: 1.6;
   font-family: 'Open Sans', Arial, sans-serif;
@@ -17,13 +17,11 @@ body {
 }
 
 
-
 .navbar-principal {
   background-color: #31a387;
   color: #ffffff;
 }
 
- 
 
 main {
   max-width: 700px;
