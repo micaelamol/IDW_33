@@ -1,5 +1,5 @@
 
-/* Estilos body */
+/* ===================== Body =========================== */
 body {
   margin: 0;
   padding: 0;
@@ -9,20 +9,36 @@ body {
   font-family: 'Open Sans', Arial, sans-serif;
 }
 
-
-/* Header*/
+/* ===================== Header ======================== */
 .navbar-brand img {
   width: 80px;
   border-radius: 50%;
 }
 
+.navbar-nav .nav-link {
+  color: #eff2f5;
+  transition: color 0.3s ease;
+}
 
 .navbar-principal {
   background-color: #31a387;
   color: #ffffff;
 }
 
+.titulo-navbar {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
 
+.navbar-nav .nav-link:hover {
+  color: #080303;
+}
+
+/* ===================== Main ======================== */
 main {
   max-width: 700px;
   margin: 30px auto;
@@ -33,29 +49,21 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: #080303;
   text-align: justify;
-  
 }
 
-h2{
+h2 {
   text-align: center;
 }
 
-
-
-
-/* Estilos formulario contacto*/
-
+/* ===================== Formulario ======================== */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
- 
 }
-
 
 label {
   font-weight: 600;
- 
 }
 
 input,
@@ -66,33 +74,24 @@ textarea {
   font-size: 1rem;
 }
 
-button {
-  background-color: #ff9800;
+.custom-btn {
+  background-color: #31a387;
   color: white;
-  padding: 12px;
   border: none;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  padding: 12px;
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  font-weight: bold;
 }
 
-
-button:hover {
+.custom-btn:hover {
   background-color: #e68a00;
 }
 
-/* Información de contacto */
-.info-contacto {
-  background: #f7f9fc;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-
-/*Footer*/
-.pie_de_portada{
+/* ===================== Footer ======================== */
+.pie_de_portada {
   background: #31a387;
   text-align: center;
   padding: 15px;
@@ -103,18 +102,12 @@ button:hover {
 }
 
 .pie_de_portada a {
- color:#081d85 ; 
+  color: #081d85;
   text-decoration: none;
   font-weight: bold;
 }
 
-
-/* Mapa */
-.mapa {
-  margin-top: 40px;
-  text-align: center;
-}
-
+/* ===================== Mapa ======================== */
 .mapa iframe {
   width: 100%;
   aspect-ratio: 16/9;
@@ -122,37 +115,50 @@ button:hover {
   border-radius: 8px;
 }
 
+/* ===================== Igualar altura columnas ================== */
+.row-equal {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-/* --- RESPONSIVE --- */
+.row-equal > .col-md-6 {
+  display: flex;
+  flex-direction: column;
+}
 
-/* Ajustes para tablets (pantallas medianas) */
+.row-equal > .col-md-6 section {
+  flex: 1;
+}
+
+@media (max-width: 767px) {
+  .row-equal,
+  .row-equal > .col-md-6,
+  .row-equal > .col-md-6 section {
+    display: block;
+    flex: none;
+  }
+}
+
+/* ===================== Responsive ================== */
 @media (max-width: 768px) {
   main {
     max-width: 90%;
     padding: 15px;
-    margin-top: 80px; /* que no quede tapado por el navbar */
-  }
-
-  form {
-    gap: 10px;
+    margin-top: 80px;
   }
 
   input,
-  textarea {
-    font-size: 0.95rem;
-  }
-
+  textarea,
   button {
-    padding: 10px;
     font-size: 0.95rem;
+    padding: 10px;
   }
 
   .mapa iframe {
-    height: 400px; /* más chico para tablets */
+    height: 400px;
   }
 }
 
-/* Ajustes para celulares (pantallas muy pequeñas) */
 @media (max-width: 480px) {
   main {
     max-width: 95%;
@@ -162,27 +168,17 @@ button:hover {
 
   h1, h2 {
     font-size: 1.3rem;
-    text-align: center;
-    
-  }
-
-  form label {
-    font-size: 0.9rem;
   }
 
   input,
-  textarea {
+  textarea,
+  button {
     font-size: 0.9rem;
     padding: 8px;
   }
 
-  button {
-    padding: 10px;
-    font-size: 0.9rem;
-  }
-
   .mapa iframe {
-    height: 300px; /* más chico para pantallas de celular */
+    height: 300px;
   }
 
   footer {
