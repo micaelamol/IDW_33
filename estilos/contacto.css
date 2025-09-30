@@ -33,10 +33,15 @@ main {
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Open Sans', Arial, sans-serif;
   color: #080303;
+  text-align: justify;
   
 }
+
+h2{
+  text-align: center;
+}
+
 
 
 
@@ -160,6 +165,7 @@ button:hover {
   h1, h2 {
     font-size: 1.3rem;
     text-align: center;
+    
   }
 
   form label {
