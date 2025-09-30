@@ -13,19 +13,20 @@ body {
   background-color: #31a387;
   color: #ffffff;
 }
+/* Estilo de los enlaces dentro del navbar */
 .navbar-nav .nav-link {
   color: #eff2f5; /* blanco institucional */
   transition: color 0.3s ease;
 }
-
+/* Efecto hover sobre los enlaces del navbar */
 .navbar-nav .nav-link:hover {
   color: #080303; /* color al pasar el mouse */
 }
-
+/* Tamaño del logo dentro del navbar */
 div a img{
   width: 80px;
 }
-
+/* Estilo del título institucional dentro del navbar */
 .titulo-navbar {
   color: white;
   font-size: 40px;
@@ -34,15 +35,7 @@ div a img{
   display: flex;
   align-items: center;
 }
-/*div a img {
-  height: 200px;
-  padding: 5px;
-  margin-left: 50px;
-  border-radius: 50%;
-  border: 2px solid #48794a;
-  background-color: white;
-}*/
-
+/* Contenedor del encabezado fijo */
 
 .encabezado {
   margin: 0;
@@ -58,7 +51,7 @@ div a img{
   z-index: 1000;
   line-height: 1;
 }
-
+/* Contenedor del título principal institucional */
 .titulo_principal {
   font-family: "Roboto", sans-serif;
   text-align: center;
@@ -66,18 +59,18 @@ div a img{
   align-items: center;
   flex: 1;
 }
-
+/* Título principal (h1) dentro del encabezado */
 .titulo_principal h1 {
   font-size: 40px;
   font-weight: 700;
 }
-
+/* Subtítulo institucional (h2) */
 .titulo_principal h2 {
   font-size: 30px;
   font-weight: 550;
   color: white;
 }
-
+/* Menú principal horizontal */
 
 .menu_principal ul {
   list-style: none;
@@ -86,6 +79,7 @@ div a img{
   margin: 0;
   padding: 0;
 }
+/* Estilo de los enlaces del menú */
 
 .menu_principal a {
   font-family: sans-serif;
@@ -95,6 +89,7 @@ div a img{
   text-decoration: none;
   font-weight: 600;
 }
+/* Estilo general para títulos h1 */
 
 h1 {
   font-size: 50px;     
@@ -105,7 +100,8 @@ li {
   display: inline;
   margin-right: 20px;
 }
-
+/* Efecto hover sobre enlaces de lista */
+/* Subraya al pasar el mouse */
 li a:hover {
   /* color: #141414; */
   text-decoration: underline;
@@ -123,6 +119,7 @@ main {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+/* Título intermedio para secciones como "Autoridades" */
 
 .titulo-intermedio {
   text-align: center;
@@ -135,17 +132,19 @@ main {
   color: #050b11; 
   font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+/* Imagen destacada en tarjetas o secciones */
 
 .card-img-top {
   object-fit: cover;
   height: 600px; 
   width: 100%;
 }
-
+/* Estilos generales para secciones */
 
 section {
   padding-bottom: 1px;
 }
+/* Párrafos dentro de secciones */
 
 section p {
   font-family: "Segoe UI", Arial, sans-serif;
@@ -154,9 +153,10 @@ section p {
   border-radius: 2px;
   box-shadow: 5px 6px 23px #b7e9dc;
 }
+/* Último párrafo de la sección con margen inferior adicional */
+
 section p:last-child {
   margin-bottom: 50px;
-  /* background-color: #003366; */
 }
 
 /*====================== establece estilos al footer ========================*/
@@ -183,11 +183,62 @@ section p:last-child {
   color: #080303; /* color al pasar el mouse */
 }
 
-/*.pie_de_portada a {
-  text-decoration: none;
+/*====================== MODO OSCURO: ESTILOS GENERALES ========================================*/
+[data-bs-theme="dark"] body {
+  background-color: #121212; /* Fondo principal oscuro */
+  color: #e0e0e0; /* Texto claro para buena legibilidad */
 }
 
-.pie_de_portada a:hover {
-  text-decoration: underline;
-  color: #080303;
-}*/
+/*====================== NAVBAR ========================*/
+[data-bs-theme="dark"] .navbar-principal {
+  background-color: #1f1f1f; /* Fondo oscuro institucional */
+  color: #f8f9fa; /* Texto claro en el navbar */
+}
+
+/*====================== TARJETAS ========================*/
+[data-bs-theme="dark"] .card {
+  background-color: #2c2c2c; /* Fondo oscuro para tarjetas */
+  color: #f0f0f0; /* Texto claro dentro de tarjetas */
+}
+
+/*====================== TÍTULO DEL NAVBAR ========================*/
+[data-bs-theme="dark"] .titulo-navbar {
+  color: #ffffff; /* Blanco puro para destacar el título */
+}
+
+/*====================== FOOTER ========================*/
+[data-bs-theme="dark"] .pie_de_portada {
+  background-color: #1a1a1a; /* Fondo oscuro institucional */
+  color: #f0f0f0; /* Texto claro en el pie de página */
+}
+
+[data-bs-theme="dark"] .pie_de_portada a {
+  color: #9ecfff; /* Enlaces en azul claro institucional */
+}
+
+/*====================== CONTENIDO PRINCIPAL ========================*/
+[data-bs-theme="dark"] main {
+  background-color: #1e1e1e; /* Fondo oscuro para el contenido */
+  color: #e0e0e0; /* Texto claro para mantener contraste */
+}
+
+[data-bs-theme="dark"] section p {
+  background-color: #2a2a2a; /* Fondo oscuro para párrafos */
+  border-color: #444; /* Borde más tenue en modo oscuro */
+  box-shadow: 5px 6px 23px #000000; /* Sombra más profunda */
+}
+
+/*====================== TÍTULO DE SECCIÓN INTERMEDIA ========================*/
+[data-bs-theme="dark"] .titulo-intermedio h2 {
+  color: #e0e0e0; /* Texto claro para títulos como "Autoridades" */
+}
+
+
+
+
+
+
+
+
+
+
