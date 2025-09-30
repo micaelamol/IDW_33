@@ -4,59 +4,102 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacto - Vital Consultorios - Salud Médica Integral </title>
+    <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="estilos/contacto.css" />
+   
   </head>
-  <body>
-      <header class="encabezado">
-        <img src="imagenes/Logo.jpg" alt="Logo de Vital Consultorios"> 
-      <div class="titulo_principal">
-        <h1> Vital Consultorios</h1>
-        <h2> Salud Médica Integral</h2>
-      </div>
-      <nav class="menu_principal">
-        <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="institucional.html">Institucional</a></li>
+  <body>      
+    <header>
+      <nav class="navbar navbar-principal fixed-top shadow-sm navbar-principal navbar-expand-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="contacto.html">
+        <img src="imagenes/Logo.jpg" alt="Logo Vital Consultorios" class="rounded-circle border" />
+      </a>
+
+      <div class="d-flex justify-content-center w-100">
+              <span class="titulo-navbar">Vital Consultorios</span>
+          </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <span class="ms-2">Menú</span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="institucional.html">Institucional</a></li>
         </ul>
-      </nav>
-    </header>
+      </div>
+    </div>
+  </nav>
+  </header>
 
-    <main>
-      <section id="contacto">
+  
+      
+    <main class="container my-5">
+  <!-- Imagen superior -->
+  <section class="imagen mb-4">
+    <img src="imagenes/Contacto.jpg" class="img-fluid rounded" alt="foto-contacto" />
+  </section>
+
+  <!-- Row con altura igualada -->
+  <div class="row row-equal g-4">
+    <!-- Formulario -->
+    <div class="col-md-6">
+      <section id="contacto" class="h-100 d-flex flex-column">
         <h2>Contacto</h2>
-        <p>Dejanos tu mensaje y te responderemos lo antes posible.</p>
-              <form action="enviar.php" method="post">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
+        <p>
+          Si desea realizar una consulta a través de nuestro sitio web, 
+          por favor complete el siguiente formulario.
+          Recibiremos su mensaje y será derivado al área correspondiente. 
+          Le responderemos con la mayor celeridad posible.
+          Muchas gracias.
+        </p>
+        <form action="enviar.php" method="post" class="d-flex flex-column gap-3 flex-grow-1">
+          <div>
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" required>
+          </div>
+          <div>
+            <label for="email" class="form-label">Correo electrónico:</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          <div>
+            <label for="telefono" class="form-label">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" class="form-control" required>
+          </div>
+          <div>
+            <label for="mensaje" class="form-label">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn w-100 custom-btn mt-auto">Enviar</button>
+        </form>
+      </section>
+    </div>
 
-          <label for="email">Correo electrónico:</label>
-          <input type="email" id="email" name="email" required />
-
-          <label for="telefono">Teléfono:</label>
-          <input type="tel" id="telefono" name="telefono" required />
-            
-          <label for="mensaje">Mensaje:</label>
-          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-        <section id="ubicacion" class="mapa">
-          <h2>Ubicación</h2>
-          <iframe
-           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.776807253814!2d-60.53669452531154!3d-31.72199131108982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b452618aba1279%3A0xdbc992b20dabd8da!2sAlameda%20de%20la%20Federaci%C3%B3n%20520%2C%20E3100%20Paran%C3%A1%2C%20Entre%20R%C3%ADos!5e0!3m2!1ses-419!2sar!4v1756828555774!5m2!1ses-419!2sar"
-           loading="lazy"
-           referrerpolicy="no-referrer-when-downgrade"
+    <!-- Mapa -->
+    <div class="col-md-6">
+      <section id="ubicacion" class="mapa h-100 d-flex flex-column">
+        <h2>Ubicación</h2>
+        <iframe
+          class="w-100 rounded shadow flex-grow-1"
+          style="min-height: 450px;"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.776807253814!2d-60.53669452531154!3d-31.72199131108982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b452618aba1279%3A0xdbc992b20dabd8da!2sAlameda%20de%20la%20Federaci%C3%B3n%20520%2C%20E3100%20Paran%C3%A1%2C%20Entre%20R%C3%ADos!5e0!3m2!1ses-419!2sar!4v1756828555774!5m2!1ses-419!2sar"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
           aria-label="Mapa con la ubicación de Vital Consultorios">
-          </iframe>
-        </section>
-    </main>
-
-    <footer>
+        </iframe>
+      </section>
+    </div>
+  </div>
+</main>
+    <footer class="pie_de_portada">
         <p>&copy; 2025 Vital Consultorios. Todos los derechos reservados.</p>
         <p>Dirección: Alameda de la Federación 520 - Paraná - Entre Ríos - Argentina</p>
         <p>Teléfono: +54 0343 4232828 | Email: <a href="mailto:contacto@vitalconsultorios.com.ar">contacto@vitalconsultorios.com.ar</a></p>
         <p>Instagram: <a href="https://www.instagram.com/vitalconsultorios" target="_blank">@vitalconsultorios</a></p>
     </footer>
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -1,140 +1,69 @@
 
-/* Estilos body */
+/* ===================== Body =========================== */
 body {
   margin: 0;
   padding: 0;
-  background-color: #f7f9fc;
+  background-color: #c0b6b69f;
   color: #333;
   line-height: 1.6;
+  font-family: 'Open Sans', Arial, sans-serif;
 }
 
-
-
-/* Estilos header */
-
-header img {
-  height: 200px;
-  padding: 5px;
-  margin-left: 50px;
-  border-radius: 50px;
-  border: 2px solid #48794a;
-  background-color: white;
+/* ===================== Header ======================== */
+.navbar-brand img {
+  width: 80px;
+  border-radius: 50%;
 }
 
-
-.encabezado {
-  background: #31a387;
-  color: rgb(12, 1, 3);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 3px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  line-height: 1;  
+.navbar-nav .nav-link {
+  color: #eff2f5;
+  transition: color 0.3s ease;
 }
 
+.navbar-principal {
+  background-color: #31a387;
+  color: #ffffff;
+}
 
-.titulo_principal {
-  font-family: "Roboto", sans-serif;
-  text-align: center;
+.titulo-navbar {
   color: white;
-  align-items: center;
-  flex: 1;
-}
-
-.titulo_principal h1  {
   font-size: 40px;
-  font-weight: 700;
-}
-
-
-.titulo_principal h2 {
-  font-size: 30px;
-  font-weight: 550;
-  color: white;
-}
-
-
-.menu_principal ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-}
-
-
-.menu_principal {
+  font-weight: bold;
+  margin-left: 15px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  position: relative;
 }
 
-.menu_principal a {
-  font-family: sans-serif;
-  color: #0a127a;
-  padding: 8px 12px;
-  white-space: nowrap;
-  text-decoration: none;
-  font-weight: 600;
+.navbar-nav .nav-link:hover {
+  color: #080303;
 }
 
-
-li {
-  display: inline;
-  margin-right: 20px;
-  
-}
-
-
-li a:hover {
-  color: #141414;
-}
-
-
+/* ===================== Main ======================== */
 main {
   max-width: 700px;
   margin: 30px auto;
   padding: 20px;
-  padding-top: 240px;
+  padding-top: 100px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: "Segoe UI", Arial, sans-serif;
   color: #080303;
-  
+  text-align: justify;
 }
 
-
-.menu_toggle {
-  display: none;
-  font-size: 28px;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  margin-right: 20px;
+h2 {
+  text-align: center;
 }
 
-
-
-/* Estilos formulario contacto*/
-
+/* ===================== Formulario ======================== */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
- 
 }
-
 
 label {
   font-weight: 600;
- 
 }
 
 input,
@@ -145,90 +74,117 @@ textarea {
   font-size: 1rem;
 }
 
-button {
-  background-color: #ff9800;
+.custom-btn {
+  background-color: #31a387;
   color: white;
-  padding: 12px;
   border: none;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  padding: 12px;
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  font-weight: bold;
 }
 
-
-
-button:hover {
+.custom-btn:hover {
   background-color: #e68a00;
 }
 
-.info-contacto {
-  background: #f7f9fc;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.info-contacto h3 {
-  margin-bottom: 10px;
-  color: #080303;
-}
-
-footer {
-  text-align: center;
-  padding: 7px;
-  margin-top: 30px;
+/* ===================== Footer ======================== */
+.pie_de_portada {
   background: #31a387;
-  color: #003366;
+  text-align: center;
+  padding: 15px;
+  color: #fff;
   font-weight: 100;
   font-family: 'Open Sans', sans-serif;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
-
-.mapa {
-  margin-top: 40px;
-  text-align: center;
+.pie_de_portada a {
+  color: #081d85;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-
+/* ===================== Mapa ======================== */
 .mapa iframe {
   width: 100%;
-  height: 500px;     
+  aspect-ratio: 16/9;
   border: 0;
-  border-radius: 8px; 
+  border-radius: 8px;
 }
 
+/* ===================== Igualar altura columnas ================== */
+.row-equal {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  .menu_items {
-    display: none;
-    flex-direction: column;
-    background-color: #31a387;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  }
+.row-equal > .col-md-6 {
+  display: flex;
+  flex-direction: column;
+}
 
-  .menu_items.show {
-    display: flex;
-  }
+.row-equal > .col-md-6 section {
+  flex: 1;
+}
 
-  .menu_items li {
-    margin: 0;
-    border-bottom: 1px solid #ffffff33;
-  }
-
-  .menu_items a {
-    color: white;
-    padding: 12px;
+@media (max-width: 767px) {
+  .row-equal,
+  .row-equal > .col-md-6,
+  .row-equal > .col-md-6 section {
     display: block;
+    flex: none;
+  }
+}
+
+/* ===================== Responsive ================== */
+@media (max-width: 768px) {
+  main {
+    max-width: 90%;
+    padding: 15px;
+    margin-top: 80px;
   }
 
-  .menu_items a:hover {
-    background-color: #21816c;
+  input,
+  textarea,
+  button {
+    font-size: 0.95rem;
+    padding: 10px;
   }
+
+  .mapa iframe {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    max-width: 95%;
+    padding: 10px;
+    margin-top: 70px;
+  }
+
+  h1, h2 {
+    font-size: 1.3rem;
+  }
+
+  input,
+  textarea,
+  button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .mapa iframe {
+    height: 300px;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+}
 
 
