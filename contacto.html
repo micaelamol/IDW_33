@@ -6,7 +6,6 @@
     <title>Contacto - Vital Consultorios - Salud Médica Integral </title>
     <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="estilos/contacto.css" />
-   
   </head>
   <body>      
     <header>
@@ -15,6 +14,7 @@
       <a class="navbar-brand" href="contacto.html">
         <img src="imagenes/Logo.jpg" alt="Logo Vital Consultorios" class="rounded-circle border" />
       </a>
+
 
       <div class="d-flex justify-content-center w-100">
   						<span class="titulo-navbar">Vital Consultorios</span>
@@ -33,19 +33,12 @@
       </div>
     </div>
   </nav>
-  </header>
-
-  
-      
+  </header>      
     <main class="container my-5">
-  <!-- Imagen superior -->
-  <section class="imagen mb-4">
-    <img src="imagenes/health IT data.jpg" class="img-fluid rounded" alt="foto-contacto" />
-  </section>
 
-  <!-- Row con altura igualada -->
   <div class="row row-equal g-4">
-    <!-- Formulario -->
+
+   
     <div class="col-md-6">
       <section id="contacto" class="h-100 d-flex flex-column">
         <h2>Contacto</h2>
@@ -78,13 +71,12 @@
       </section>
     </div>
 
-    <!-- Mapa -->
+
     <div class="col-md-6">
       <section id="ubicacion" class="mapa h-100 d-flex flex-column">
         <h2>Ubicación</h2>
         <iframe
           class="w-100 rounded shadow flex-grow-1"
-          style="min-height: 450px;"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.776807253814!2d-60.53669452531154!3d-31.72199131108982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b452618aba1279%3A0xdbc992b20dabd8da!2sAlameda%20de%20la%20Federaci%C3%B3n%20520%2C%20E3100%20Paran%C3%A1%2C%20Entre%20R%C3%ADos!5e0!3m2!1ses-419!2sar!4v1756828555774!5m2!1ses-419!2sar"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
@@ -100,6 +92,20 @@
         <p>Teléfono: +54 0343 4232828 | Email: <a href="mailto:contacto@vitalconsultorios.com.ar">contacto@vitalconsultorios.com.ar</a></p>
         <p>Instagram: <a href="https://www.instagram.com/vitalconsultorios" target="_blank">@vitalconsultorios</a></p>
     </footer>
-    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    
+
+<!-- BOTÓN MODO OSCURO -->
+  <button id="modoOscuroBtn" class="btn btn-secondary position-fixed bottom-0 end-0 m-3" aria-label="Activar o desactivar modo oscuro">Modo  🌙 / ☀️</button>
+
+  <!-- JS Bootstrap + Modo Oscuro -->
+  <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const btn = document.getElementById('modoOscuroBtn');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+
+
   </body>
 </html>
