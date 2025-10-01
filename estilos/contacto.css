@@ -123,13 +123,13 @@ textarea {
 }
 
 /* ===================== Mapa ======================== */
-.mapa-degradado {
+.mapa {
   padding: 4px;
   border-radius: 12px;
-  background: linear-gradient(45deg, #31a387, #90caf9);
+ 
 }
 
-.mapa-degradado iframe {
+.mapa iframe {
   width: 100%;
   aspect-ratio: 16/9;
   border: 0;
