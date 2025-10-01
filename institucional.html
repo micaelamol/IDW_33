@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<!--Documento html principal-->
+<html lang="es" data-bs-theme="light">
 	<head>
-		<meta charset="UTF-8" />
+		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Institucional</title>
 		<link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="estilos/institucional.css" />
 	</head>
 	<body>
+<!--Encabezado y barra de navegacion principal-->		
 		<header>
 			<nav
-				class="navbar navbar-principal fixed-top shadow-sm navbar-expand-sm"
-			>
+				class="navbar navbar-principal fixed-top shadow-sm navbar-expand-sm">				
 				<div class="container-fluid">
+<!--Logo Institucional-->					
 					<a class="navbar-brand" href="index.html">
 						<img
 							src="imagenes/Logo.jpg"
@@ -20,11 +22,16 @@
 							class="rounded-circle border"
 						/>
 					</a>
-					 
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<!--Titulo centrado navbar-->					
+					<div class="d-flex justify-content-center w-100">
+  						<span class="titulo-navbar">Vital Consultorios</span>
+					</div>
+<!--Boton para menu responsive-->					
+					 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 						<span class="ms-2">Menú</span>
-					</button>
+					 </button>
+<!--Enlace de navagacion-->					 
 					<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
 						<ul class="navbar-nav">
 							<li class="nav-item">
@@ -41,7 +48,7 @@
 
 		<main class="container mt-5">
   			<div class="row justify-content-center">
-
+<!--Seccion Institucional-->
 			<section>
 				<h2>¿Quiénes somos?</h2>
 				<p>
@@ -65,12 +72,12 @@
 					empatía. Queremos que cada persona que ingrese a Vital Consultorios se
 					sienta escuchada, cuidada y acompañada.
 				</p>
+<!-- Titulo seccion Autoridades-->				
 			</section>
-
 			<section class="titulo-intermedio">
   				<h2> Autoridades </h2>
 			</section>
-          		 
+<!--card 1-->          		 
 			<div class="col-md-4 mb-4">
      			<div class="card h-100 text-center shadow">
         		 <img src="imagenes/Dr. Lorena Gonzalez.jpg" class="card-img-top" alt="Dra. Lorena Gonzalez">
@@ -80,7 +87,7 @@
         			</div>
       			</div>
     		</div>
-
+<!--card 2-->
           		<div class="col-md-4 mb-4">
      				<div class="card h-100 text-center shadow">
 						<img src="imagenes/Contador Jorge Lopez.jpg" class="card-img-top img-fluid" alt="Contador Jorge Lopez" />
@@ -90,7 +97,7 @@
           			</div>
        	 		</div>
      		</div>
-
+<!--card 3-->
 			<div class="col-md-4 mb-4">
      				<div class="card h-100 text-center shadow">
 						<img src="imagenes/Dr. Lorenzo David.jpg" class="card-img-top img-fluid" alt="Dr. Lorenzo David" />
@@ -101,29 +108,41 @@
        	 		</div>
      		</div>
 
-
-
 		</main>
+<!--footer -->
 		<footer class="pie_de_portada">
-			<p>&copy; 2025 Vital Consultorios. Todos los derechos reservados.</p>
-			<p>
-				Dirección: Alameda de la Federacion 520 - Parana - Entre Rios -
-				Argentina -
-			</p>
-			<p>
-				Telefono: +54 0343 4232828 | Email:
-				<a href="mailto:contacto@vitalconsultorios.com.ar"
-					>contacto@vitalconsultorios.com.ar</a
-				>
-			</p>
-			<!-- <p>Email: contacto@vitalconsultorios.com.ar</p> -->
-			<p>
-				Instagram:
-				<a href="https://www.instagram.com/vitalconsultorios" target="_blank"
-					>@vitalconsultorios</a
-				>
-			</p>
+ 		 <div class="container">
+    		<div class="row text-center text-md-start">
+   			   <div class="col-12 col-md-6 mb-3">
+        			<p>&copy; 2025 Vital Consultorios. Todos los derechos reservados.</p>
+       				<p>Dirección: Alameda de la Federación 520 - Paraná - Entre Ríos - Argentina</p>
+        			<p>Teléfono: +54 0343 4232828</p>
+     			</div>
+     			<div class="col-12 col-md-6 mb-3">
+        			<p>
+         			Email:
+         			 <a href="mailto:contacto@vitalconsultorios.com.ar">contacto@vitalconsultorios.com.ar</a>
+       				</p>
+        			<p>
+         			Instagram:
+         			 <a href="https://www.instagram.com/vitalconsultorios" target="_blank" rel="noopener">@vitalconsultorios</a>
+        			</p>
+      			</div>
+    		</div>
+  		 </div>
 		</footer>
-		<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+<!--MODO OSCURO -->
+  	<script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+ 		<button id="toggleTheme" class="btn btn-secondary position-fixed bottom-0 end-0 m-3 z-3">
+ 			 Modo oscuro
+		</button>
+			<script>
+  				const html = document.documentElement;
+  				const toggle = document.getElementById('toggleTheme');
+
+  				toggle.addEventListener('click', () => {
+    			const actual = html.getAttribute('data-bs-theme');
+    			html.setAttribute('data-bs-theme', actual === 'dark' ? 'light' : 'dark');});
+	</script>
 	</body>
 </html>

@@ -17,12 +17,14 @@ body {
 .navbar-nav .nav-link {
   color: #eff2f5;
   transition: color 0.3s ease;
+ 
 }
 
 .navbar-principal {
   background-color: #31a387;
   color: #ffffff;
 }
+
 
 .titulo-navbar {
   color: white;
@@ -32,10 +34,12 @@ body {
   display: flex;
   align-items: center;
   text-align: center;
+ 
 }
 
 .navbar-nav .nav-link:hover {
   color: #080303;
+   text-decoration-line: underline;
 }
 
 /* ===================== Main ======================== */
@@ -55,6 +59,7 @@ h2 {
   text-align: center;
 }
 
+
 /* ===================== Formulario ======================== */
 form {
   display: flex;
@@ -64,6 +69,7 @@ form {
 
 label {
   font-weight: 600;
+
 }
 
 input,
@@ -74,6 +80,7 @@ textarea {
   font-size: 1rem;
   width: 100%;
 }
+
 
 .custom-btn {
   background-color: #31a387;
@@ -101,7 +108,7 @@ textarea {
   color: #fff;
   font-weight: 100;
   font-family: 'Open Sans', sans-serif;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 .pie_de_portada a {
@@ -199,7 +206,7 @@ body.dark-mode .mapa-degradado {
 }
 
 /* ===================== Botón Modo Oscuro ================== */
-#modoOscuroBtn {
+.modoOscuroBtn {
   z-index: 2000;
 }
 
