@@ -202,6 +202,10 @@ body.dark-mode {
   font-size: larger;
   text-decoration: underline;
 }
+.navbar-nav .nav-link:hover {
+  color: #080303; /* color al pasar el mouse */
+  font-size: larger;
+}
 
 .titulo-navbar {
   color: white;
@@ -210,4 +214,29 @@ body.dark-mode {
   margin-left: 15px;
   display: flex;
   align-items: center;
+}
+
+/* footer */
+
+.pie_de_portada {
+  margin-top: 226px;
+  background: #31a387;
+  color: #eff2f5;
+  text-align: center;
+  padding: 15px;
+  font-weight: 100;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.2;
+}
+
+.pie_de_portada a {
+  text-decoration: none;
+  color: #eff2f5; /* blanco institucional */
+  transition: color 0.3s ease;
+}
+
+.pie_de_portada a:hover {
+  text-decoration: underline;
+  color: #080303; /* color al pasar el mouse */
+  
 }

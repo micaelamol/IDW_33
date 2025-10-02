@@ -17,7 +17,7 @@ body {
 
 .navbar-nav .nav-link {
   /* color: #eff2f5; */ /* blanco institucional */
-  color: #000;
+  color: #f5f3f3;
   transition: color 0.3s ease;
 }
 /* Efecto hover sobre los enlaces del navbar */
