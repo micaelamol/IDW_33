@@ -110,7 +110,6 @@ section.obras_sociales h3 {
   color: #ffffff;
   font-weight: 600;
 }
-
 .pie_de_portada {
   background: #31a387;
   color: #fff;
@@ -128,8 +127,8 @@ section.obras_sociales h3 {
 
 .pie_de_portada a:hover {
   text-decoration: underline;
- 
 }
+
 /*  MODO OSCURO  */
 body.dark-mode {
   background-color: #121212;
