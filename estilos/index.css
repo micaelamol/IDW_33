@@ -8,11 +8,11 @@ body {
 div a img{
   width: 80px;
 }
-/*CARDS */
+/*CARDS #062336 */
 .card {
   border-radius: 10px;
   overflow: hidden;
-  border: 2px solid #062336;
+  border: 2px solid #062336 ;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color: #e8fdf7;
 }
@@ -44,7 +44,7 @@ div a img{
 }
 
 .card-text {
-  color: #444;
+  color:#444;
 }
 
 /*  PORTADA */
@@ -62,7 +62,7 @@ div a img{
 
 .portada h3,
 .portada p {
-  background: rgba(217, 238, 244, 0.9);
+  background:#31a387;
   padding: 10px 15px;
   border-radius: 8px;
   color: #333;
@@ -102,7 +102,13 @@ section.obras_sociales h3 {
 /* NAVBAR Y FOOTER */
 .navbar-principal {
   background-color: #31a387;
+  color:#ffffff;
+}
+/* Enlaces de la barra de navegación */
+.navbar-principal .nav-link[href="institucional.html"],
+.navbar-principal .nav-link[href="contacto.html"] {
   color: #ffffff;
+  font-weight: 600;
 }
 
 .pie_de_portada {
@@ -115,7 +121,7 @@ section.obras_sociales h3 {
 }
 
 .pie_de_portada a {
- color:#081d85 ; 
+ color:white ; 
   text-decoration: none;
   font-weight: bold;
 }
@@ -180,51 +186,19 @@ body.dark-mode {
   filter: invert(1);
 }
 
-/*Celular (<=567px) */
-@media (max-width: 567px) {
-  .portada h3 {
-    font-size: 1.5rem;
-  }
-  .portada p {
-    font-size: 0.9rem;
-    padding: 8px 10px;
-  }
-   
   .card-img-top {
     aspect-ratio: 3 / 4;
     height: auto;
   }
-}
 
-/*Tablet (>=570px y <=760px)*/
-@media (min-width: 570px) and (max-width: 760px) {
-  .portada h3 {
-    font-size: 2rem;
-  }
-  .portada p {
-    font-size: 1rem;
-    padding: 10px 12px;
-  }
   .card-img-top {
     height: 220px; 
   }
-}
 
-/* PC(>=1200px) */
-@media (min-width: 1200px) {
-  .portada h3 {
-    font-size: 3rem;
-  }
-  .portada p {
-    font-size: 1.25rem;
-    padding: 12px 15px;
-  }
   .card-img-top {
     height: 270px; 
   }
-}
-
-.nav-link:hover{
+  .nav-link:hover{
   font-size: larger;
   text-decoration: underline;
 }
