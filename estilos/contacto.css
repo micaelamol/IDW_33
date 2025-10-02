@@ -1,47 +1,58 @@
-/* ===================== Body =========================== */
+/* ===================== establece estilos al body ===========================*/
 body {
   margin: 0;
   padding: 0;
   background-color: #c0b6b69f;
   color: #333;
   line-height: 1.6;
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
+
+  
 }
 
-/* ===================== Header ======================== */
+/*====================== establece estilos al header ========================*/
+/* Tamaño del logo dentro del navbar */
 .navbar-brand img {
-  width: 60px;
-  border-radius: 50%;
+  width: 80px;
+
 }
+
+/* Estilo de los enlaces dentro del navbar */
 /* #eff2f5 */
 .navbar-nav .nav-link {
   color: #f5f1f1;
   transition: color 0.3s ease;
+  font-weight: 600;
  
 }
 
 .navbar-principal {
   background-color: #31a387;
   color: #ffffff;
+
 }
 
 
+/* Estilo del título consultorios dentro del navbar */
 .titulo-navbar {
-  color: white;
-  font-size: 32px;
+   color: white;
+  font-size: 40px;
   font-weight: bold;
   margin-left: 15px;
-  display: flex;
+  display: center;
   align-items: center;
-  text-align: center;
+
  
 }
 
+/* Efecto hover sobre los enlaces del navbar */
 .navbar-nav .nav-link:hover {
   color: #080303;
   text-decoration-line: underline;
   font-size: larger;
+
 }
+
 
 /* ===================== Main ======================== */
 main {
@@ -107,15 +118,14 @@ textarea {
   text-align: center;
   padding: 15px;
   color: #fff;
-  font-weight: 100;
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
 }
 
 .pie_de_portada a {
   text-decoration: none;
-  color: #eff2f5;
-  transition: color 0.3s ease;
+  color: white;
+  font-weight: bold;
 }
 
 .pie_de_portada a:hover {
@@ -263,5 +273,3 @@ body.dark-mode .custom-btn:hover {
     font-size: 28px;
   }
 }
-
-

@@ -99,7 +99,7 @@ section.obras_sociales h3 {
   font-family: "Montserrat", sans-serif;
 }
 
-/* NAVBAR Y FOOTER */
+/* NAVBAR*/
 .navbar-principal {
   background-color: #31a387;
   color:#ffffff;
@@ -110,24 +110,7 @@ section.obras_sociales h3 {
   color: #ffffff;
   font-weight: 600;
 }
-.pie_de_portada {
-  background: #31a387;
-  color: #fff;
-  text-align: center;
-  padding: 15px;
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.5;
-}
 
-.pie_de_portada a {
- color:white ; 
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.pie_de_portada a:hover {
-  text-decoration: underline;
-}
 
 /*  MODO OSCURO  */
 body.dark-mode {
@@ -211,27 +194,25 @@ body.dark-mode {
   font-size: 40px;
   font-weight: bold;
   margin-left: 15px;
-  display: flex;
+  display: center;
   align-items: center;
 }
 
 /* footer */
 
 .pie_de_portada {
-  margin-top: 226px;
-  background: #31a387;
-  color: #eff2f5;
+ background: #31a387;
+  color: #fff;
   text-align: center;
   padding: 15px;
-  font-weight: 100;
   font-family: "Open Sans", sans-serif;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 .pie_de_portada a {
+  color:white ; 
   text-decoration: none;
-  color: #eff2f5; /* blanco institucional */
-  transition: color 0.3s ease;
+  font-weight: bold;
 }
 
 .pie_de_portada a:hover {
@@ -239,3 +220,4 @@ body.dark-mode {
   color: #080303; /* color al pasar el mouse */
   
 }
+

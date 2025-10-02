@@ -7,6 +7,10 @@ body {
   background-color: #c0b6b69f;
   color: #080303;
   line-height: 1.6;
+  font-family: "Open Sans", sans-serif;
+ 
+  
+  
 }
 /*====================== establece estilos al header ========================*/
 .navbar-principal {
@@ -19,6 +23,8 @@ body {
   /* color: #eff2f5; */ /* blanco institucional */
   color: #f5f3f3;
   transition: color 0.3s ease;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
 }
 /* Efecto hover sobre los enlaces del navbar */
 
@@ -36,7 +42,7 @@ div a img{
   font-size: 40px;
   font-weight: bold;
   margin-left: 15px;
-  display: flex;
+  display: center;
   align-items: center;
 }
 /* Contenedor del encabezado fijo */
@@ -165,20 +171,18 @@ section p:last-child {
 /*====================== establece estilos al footer ========================*/
 
 .pie_de_portada {
-  margin-top: 226px;
   background: #31a387;
-  color: #eff2f5;
+  color: #fff;
   text-align: center;
   padding: 15px;
-  font-weight: 100;
   font-family: "Open Sans", sans-serif;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 .pie_de_portada a {
+  color: white; /* blanco institucional */
   text-decoration: none;
-  color: #eff2f5; /* blanco institucional */
-  transition: color 0.3s ease;
+  font-weight: bold;
 }
 
 .pie_de_portada a:hover {
@@ -236,6 +240,8 @@ section p:last-child {
 [data-bs-theme="dark"] .titulo-intermedio h2 {
   color: #e0e0e0; /* Texto claro para títulos como "Autoridades" */
 }
+
+
 
 
 
