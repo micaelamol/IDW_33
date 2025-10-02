@@ -202,3 +202,12 @@ body.dark-mode {
   font-size: larger;
   text-decoration: underline;
 }
+
+.titulo-navbar {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
