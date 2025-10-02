@@ -16,13 +16,15 @@ body {
 /* Estilo de los enlaces dentro del navbar */
 
 .navbar-nav .nav-link {
-  color: #eff2f5; /* blanco institucional */
+  /* color: #eff2f5; */ /* blanco institucional */
+  color: #000;
   transition: color 0.3s ease;
 }
 /* Efecto hover sobre los enlaces del navbar */
 
 .navbar-nav .nav-link:hover {
   color: #080303; /* color al pasar el mouse */
+  font-size: larger;
 }
 /* Tamaño del logo dentro del navbar */
 div a img{
@@ -113,7 +115,6 @@ li a:hover {
 
 main {
   position: relative;
-  top: 192px;
   max-width: 800px;
   margin: 40px auto;
   padding: 0 20px;
@@ -183,9 +184,10 @@ section p:last-child {
 .pie_de_portada a:hover {
   text-decoration: underline;
   color: #080303; /* color al pasar el mouse */
+  
 }
 
-/*====================== MODO OSCURO: ESTILOS GENERALES ========================================*/
+/*====================== MODO OSCURO: ESTILOS GENERALES ======================*/
 [data-bs-theme="dark"] body {
   background-color: #121212; /* Fondo principal oscuro */
   color: #e0e0e0; /* Texto claro para buena legibilidad */
