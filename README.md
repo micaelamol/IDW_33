@@ -2,8 +2,6 @@
 Repositorio para la clase IDW
 
 ## Integrantes del grupo 33
-
-- Bruno Bonelli  
 - Carlos Aníbal Gabrovich  
 - Enzo Sebastián Guido  
 - Vanesa Micaela Molina  
