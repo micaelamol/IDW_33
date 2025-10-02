@@ -223,3 +223,8 @@ body.dark-mode {
     height: 270px; 
   }
 }
+
+.nav-link:hover{
+  font-size: larger;
+  text-decoration: underline;
+}
