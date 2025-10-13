@@ -1,0 +1,36 @@
+/* Modo oscuro para alta de médicos */
+.dark-mode {
+  background-color: #121212 !important;
+  color: #f1f1f1 !important;
+}
+
+.dark-mode .form-control {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  border: 1px solid #444;
+}
+
+.dark-mode .form-control::placeholder {
+  color: #bbb;
+}
+
+.dark-mode .form-label,
+.dark-mode h2 {
+  color: #f1f1f1;
+}
+
+.dark-mode .bg-light {
+  background-color: #1e1e1e !important;
+}
+
+.dark-mode .btn-primary {
+  background-color: #bb86fc;
+  border-color: #bb86fc;
+  color: #121212;
+}
+
+.dark-mode .btn-secondary {
+  background-color: #333;
+  border-color: #555;
+  color: #f1f1f1;
+}

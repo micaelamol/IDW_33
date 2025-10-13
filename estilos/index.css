@@ -106,7 +106,8 @@ section.obras_sociales h3 {
 }
 /* Enlaces de la barra de navegación */
 .navbar-principal .nav-link[href="institucional.html"],
-.navbar-principal .nav-link[href="contacto.html"] {
+.navbar-principal .nav-link[href="contacto.html"], 
+.navbar-principal .nav-link[href="index.html"] {
   color: #ffffff;
   font-weight: 600;
 }
