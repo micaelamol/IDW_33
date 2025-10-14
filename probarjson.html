@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="estilos/index.css" />
+  </head>
+  <body>
+    <div id="cards" class="row g-3">
+      <!-- CARD 1 -->
+      <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 text-center">
+          <img
+          src="imagenes/Dr Ana Maria Ruiz.jpg"
+          class="card-img-top img-fluid"
+          alt="Foto de la Dra. Ana Maria Ruiz - Pediatría"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Dra. Ana Maria Ruiz</h5>
+            <p class="card-text">Especialidad: Pediatría</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <!-- <script>
+      const btn = document.getElementById('modoOscuroBtn');
+      btn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+      });
+    </script> -->
+    <script>
+      /*valores = ["ana", "maria", "esteban"];
+      for(i=0;i<(valores.lenght);i++);
+      {
+        const divid1 = document.getElementById("1");
+        const parr = document.createElement("p");
+        parr.textContent = valores[i];
+        divid1.append(parr);
+      };*/
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+
+fetch('json/medicos.json')
+.then(response=>{
+  if(!response.ok) {
+    throw new ("error al cargar el archivo");
+  }
+  return response.json();
+        })
+        .then(data=>{
+          localStorage.setItem("medicos",JSON.stringify(data));
+          console.log(typeof(data))
+
+          let datos=localStorage.getItem('medicos');
+        console.log(typeof(JSON.parse(datos)));
+        let j=JSON.parse(datos);
+        console.log(j);
+            j["0"].medicos.forEach((element) => {
+              console.log(element.nombre)
+          let cards= document.getElementById('cards')
+        cards.innerHTML += `
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 text-center">
+          <img
+            src="${element.tipo}${element.imagen}"
+            class="card-img-top img-fluid"
+            alt="Foto de la Dra. Ana Maria Ruiz - Pediatría"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Dra. ${element.nombre} ${element.apellido}</h5>
+            <p class="card-text">Especialidad: ${element.especialidad}</p>
+          </div>
+        </div>
+      </div>`
+            
+            });
+        })
+
+
+        sessionStorage.setItem('usuario',"paciente");
+       
+        
+
+        /*let datos=localStorage.getItem('medicos');
+        console.log(typeof(JSON.parse(datos)));
+        let j=JSON.parse(datos);
+        console.log(j);
+            j["0"].medicos.forEach((element) => {
+              console.log(element)
+          let cards= document.getElementById('cards')
+        cards.innerHTML += `
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 text-center">
+          <img
+            src="${element.tipo}${element.imagen}"
+            class="card-img-top img-fluid"
+            alt="Foto de la Dra. Ana Maria Ruiz - Pediatría"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Dra. ${element.nombre} ${element.apellido}</h5>
+            <p class="card-text">Especialidad: ${element.especialidad}</p>
+          </div>
+        </div>
+      </div>`*/
+            /* data["0"].medicos.forEach((element) => {
+              const divid1 = document.getElementById("1");
+              console.log(element.nombre);
+              const parr = document.createElement("p");
+              parr.textContent = element.nombre;
+              divid1.append(parr); */
+
+              /* const img = document.createElement('img');
+                    img.setAttribute('src','image/jpg;base64'+element.image)
+                    document.divid1.appendchild(img) */
+            });
+
+            /* data.forEach(element => {
+                  console.log(element.imagen)
+                  }); */
+            /* Document.write('datos de json en el fetch '+data); */
+            // Trabajar con los datos
+      
+        
+    </script>
+    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
