@@ -1,25 +1,14 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-  if (localStorage.getItem("medicos") === null) {
-    console.log('entro a modificar el localstorage,linea 3 inicio.js')
-    fetch("json/medicos.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new "error al cargar el archivo"();
-        }
-        return response.json();
-      })
-      .then((data) => {
-        localStorage.setItem("medicos", JSON.stringify(data));
-        /* console.log(typeof data); */
+  if (localStorage.getItem("staf") === null) {
+    localStorage.setItem("staf", JSON.stringify(staff));
+  }
+  let datos = localStorage.getItem("staf");
 
-        let datos = localStorage.getItem("medicos");
-        /* console.log(typeof JSON.parse(datos)); */
-        let j = JSON.parse(datos);
-        /* console.log(j); */
-        j["0"].medicos.forEach((element) => {
-          /* console.log(element.nombre); */
-          let cards = document.getElementById("cards");
-          cards.innerHTML += `
+  let j = JSON.parse(datos);
+
+  j["0"].medicos.forEach((element) => {
+    let cards = document.getElementById("cards");
+    cards.innerHTML += `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 text-center">
           <img
@@ -33,12 +22,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
           </div>
         </div>
       </div>`;
-        });
-      });
-  }
-if (sessionStorage.getItem('usuario') === null)
-{
-  console.log('entro a modificar el sesionstorage,linea 40 inicio.js');
-  sessionStorage.setItem("usuario", "paciente");
-  }
+  });
 });
+
+if (sessionStorage.getItem("adminLogueado") === null) {
+  sessionStorage.setItem("adminLogueado", false);
+}
