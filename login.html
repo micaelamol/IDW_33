@@ -73,8 +73,23 @@
     <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
      <script> const btn = document.getElementById('modoOscuroBtn');
       btn.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); });
+
+      document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const usuario = document.getElementById("usuario").value.trim();
+      const contrasena = document.getElementById("contrasena").value.trim();
+
+      // Validación /contraseña prueba
+      if (usuario === "admin" && contrasena === "1234") {
+        localStorage.setItem("adminLogueado", "true");
+        window.location.href = "admin.html";
+      } else {
+        document.getElementById("mensajeError").textContent = "Usuario o contraseña incorrectos.";
+      }
+    });
+
      </script>
-    <script src="js/altaMedicos.js"> </script>
+   
 </body>
 </html>
 
