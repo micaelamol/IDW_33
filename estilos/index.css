@@ -256,3 +256,24 @@ body.dark-mode {
   color: #080303 ;
   text-decoration: underline;
 }
+
+.boton-admin:hover {
+  background-color: #080303 ;
+  color: white ;
+  text-decoration: none;
+}
+
+/* Enlaces del navbar institucional */
+.navbar-principal .nav-link {
+  color: white ;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.navbar-principal .nav-link:hover {
+  color: #080303 ;
+  text-decoration: underline;
+}
