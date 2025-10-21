@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrador - Vital Consultorios</title>
+  <link href="../bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../estilos/index.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+
+  <!-- NAVBAR INSTITUCIONAL -->
+  <nav class="navbar navbar-principal fixed-top shadow-sm navbar-expand-sm">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center gap-3 flex-grow-1">
+        <a class="navbar-brand m-0 p-0" href="../index.html">
+          <img src="../imagenes/Logo.jpg" alt="Logo Vital Consultorios" class="rounded-circle border" />
+        </a>
+      </div>
+      <div class="d-flex justify-content-center w-100">
+        <span class="titulo-navbar">Vital Consultorios</span>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+        <span class="ms-2">Menú</span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html" onclick="cerrarSesion()">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PORTADA ADMIN -->
+  <section class="portada d-flex flex-column align-items-center justify-content-center text-center">
+    <h3 class="fs-4 fs-sm-3 fs-md-2 fs-lg-1">Panel de Administración</h3>
+    <p class="p-2 p-md-3 p-lg-4">
+      Gestioná médicos, especialidades y obras sociales de <strong>Vital Consultorios</strong>.
+    </p>
+    
+  </section>
+
+  <!-- TABS ADMINISTRATIVAS -->
+  <main class="container my-5">
+    <ul class="nav nav-tabs mb-3" id="adminTabs" role="tablist">
+      <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#medicos" type="button">Médicos</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#especialidades" type="button">Especialidades</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#obrasTab" type="button">Obras Sociales</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="adminTabsContent">
+      <!-- MÉDICOS -->
+      <div class="tab-pane fade show active" id="medicos">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-primary">Listado de Médicos</h4>
+          <button class="btn btn-primary btn-sm shadow-sm d-flex align-items-center gap-2">
+            <i class="bi bi-person-plus-fill"></i> Agregar Médico
+          </button>
+        </div>
+        
+      </div>
+
+      <!-- ESPECIALIDADES -->
+      <div class="tab-pane fade" id="especialidades">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-primary">Listado de Especialidades</h4>
+          <button class="btn btn-success btn-sm shadow-sm d-flex align-items-center gap-2">
+            <i class="bi bi-plus-circle-fill"></i> Nueva Especialidad
+          </button>
+        </div>
+       
+      </div>
+
+      <!-- OBRAS SOCIALES -->
+      <div class="tab-pane fade" id="obrasTab">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-primary">Listado de Obras Sociales</h4>
+          <button id="nuevaObraBtn" class="btn btn-info btn-sm shadow-sm d-flex align-items-center gap-2">
+            <i class="bi bi-hospital-fill"></i> Agregar Obra Social
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER INSTITUCIONAL -->
+  <footer class="pie_de_portada mt-5 px-3 px-md-5">
+    <p>&copy; 2025 Vital Consultorios. Todos los derechos reservados.</p>
+    <p>Dirección: Alameda de la Federación 520 - Paraná - Entre Ríos - Argentina</p>
+    <p>Teléfono: +54 0343 4232828 | Email:
+      <a href="mailto:contacto@vitalconsultorios.com.ar">contacto@vitalconsultorios.com.ar</a>
+    </p>
+    <p>Instagram:
+      <a href="https://www.instagram.com/vitalconsultorios" target="_blank">@vitalconsultorios</a>
+    </p>
+  </footer>
+
+  <!-- BOTÓN MODO OSCURO -->
+  <button id="modoOscuroBtn" class="btn btn-secondary position-fixed bottom-0 end-0 m-3" aria-label="Activar o desactivar modo oscuro">Modo oscuro</button>
+
+  <!-- SCRIPTS -->
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="medicos.js"></script>
+  <script src="especialidad.js"></script>
+  <script src="obrasSociales.js"></script>
+  <script>
+    // Verifica si el administrador está logueado
+    if (localStorage.getItem("adminLogueado") !== "true") {
+      alert("Acceso denegado. Debes iniciar sesión primero.");
+      window.location.href = "login.html";
+    }
+
+    // Cerrar sesión
+    function cerrarSesion() {
+      localStorage.removeItem("adminLogueado");
+    }
+
+    // Modo oscuro
+    document.getElementById("modoOscuroBtn").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
+</body>
+</html>

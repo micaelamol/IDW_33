@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservar Turno - Vital Consultorios</title>
+  <link href="../bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../estilos/index.css" />
+</head>
+<body class="bg-light">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-principal navbar-expand-sm fixed-top shadow-sm">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="../index.html">
+        <img src="../imagenes/Logo.jpg" alt="Logo Vital Consultorios" class="rounded-circle border" />
+      </a>
+
+      <!-- Título centrado -->
+      <div class="d-flex justify-content-center w-100">
+  		<span class="titulo-navbar">Vital Consultorios</span>
+	  </div>
+
+      <!-- Enlace de Inicio -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white fw-semibold" href="../index.html">Inicio</a>
+
+            
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PORTADA -->
+  <section class="portada d-flex flex-column align-items-center justify-content-center text-center">
+    <h3 class="fs-4 fs-sm-3 fs-md-2 fs-lg-1">Reservá tu turno médico</h3>
+    
+    <p class="p-2 p-md-3 p-lg-4">
+      En <strong>Vital Consultorios</strong> podés agendar tu consulta con nuestros profesionales de forma rápida y segura.
+    </p>
+  </section>
+
+  <!-- FORMULARIO -->
+  <main class="container my-5">
+    <h2 class="text-center text-primary mb-4 fw-bold">Formulario de Reserva</h2>
+
+    <form id="formReserva" class="card row g-3 p-4 shadow" style="background-color: #e8fdf7; border: 2px solid #31a387;">
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Nombre y Apellido:</label>
+        <input type="text" id="nombrePaciente" class="form-control" required />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Documento:</label>
+        <input type="text" id="documentoPaciente" class="form-control" required />
+      </div>
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Especialidad:</label>
+        <select id="especialidadSelect" class="form-select" required></select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Médico:</label>
+        <select id="medicoSelect" class="form-select" required></select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Obra Social:</label>
+        <select id="obraSocialSelect" class="form-select" required></select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Fecha y Hora:</label>
+        <input type="datetime-local" id="fechaHora" class="form-control" required />
+      </div>
+      <div class="col-12 mt-3 text-center">
+        <button type="submit" class="btn btn-success me-2">Confirmar Reserva</button>
+        <button type="button" class="btn btn-danger" id="cancelarReservaBtn">Cancelar Reserva</button>
+      </div>
+    </form>
+
+    <div id="resumenReserva" class="mt-5"></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pie_de_portada mt-5 px-3 px-md-5">
+    <p>&copy; 2025 Vital Consultorios. Todos los derechos reservados.</p>
+    <p>Dirección: Alameda de la Federación 520 - Paraná - Entre Ríos - Argentina</p>
+    <p>Teléfono: +54 0343 4232828 | Email:
+      <a href="mailto:contacto@vitalconsultorios.com.ar">contacto@vitalconsultorios.com.ar</a>
+    </p>
+    <p>Instagram:
+      <a href="https://www.instagram.com/vitalconsultorios" target="_blank">@vitalconsultorios</a>
+    </p>
+  </footer>
+
+  <!-- BOTÓN MODO OSCURO -->
+  <button id="modoOscuroBtn" class="btn btn-secondary position-fixed bottom-0 end-0 m-3" aria-label="Activar o desactivar modo oscuro">Modo oscuro</button>
+
+  <!-- JS Boo -->
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('modoOscuroBtn').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+  <script src="reservas.js"></script>
+</body>
+</html>
