@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrador - Vital Consultorios</title>
+  <link href="../bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../estilos/index.css" />
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+  <!-- NAVBAR INSTITUCIONAL -->
+  <nav class="navbar navbar-principal navbar-expand-sm fixed-top shadow-sm">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="../index.html">
+        <img src="../imagenes/Logo.jpg" alt="Logo Vital Consultorios" class="rounded-circle border" />
+      </a>
+
+      <!-- Título centrado -->
+      <div class="d-flex justify-content-center w-100">
+        <span class="titulo-navbar">Vital Consultorios</span>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Botón Inicio a la derecha -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="../index.html">Inicio</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FORMULARIO LOGIN -->
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center" style="margin-top: 270px;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
+          <form id="loginForm" class="card p-4 shadow" style="background-color: #e8fdf7; border: 2px solid #062336;">
+            <h2 class="text-center mb-4 fw-bold" style="color: #03416b; font-family: 'Poppins', sans-serif; font-size: 1.25rem;">
+             Administrador
+            </h2>
+             <div class="form-floating mb-3">
+              <input type="text" id="usuario" class="form-control" required>
+              <label for="usuario">Usuario</label>
+             </div>
+
+             <div class="form-floating mb-3">
+              <input type="password" id="contrasena" class="form-control" required>
+              <label for="clave">Contraseña</label>
+             </div>
+
+          <div class="text-center">
+
+        <button type="submit" class="btn btn-light btn-sm px-5">Iniciar Sesión</button>
+          </div>
+          </div>
+          <div id="mensajeError" class="mt-3 text-danger fw-semibold text-center"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER INSTITUCIONAL -->
+  <footer class="pie_de_portada mt-auto px-3 px-md-5">
+    <p>&copy; 2025 Vital Consultorios. Todos los derechos reservados.</p>
+    <p>Dirección: Alameda de la Federación 520 - Paraná - Entre Ríos - Argentina</p>
+    <p>Teléfono: +54 0343 4232828 | Email:
+      <a href="mailto:contacto@vitalconsultorios.com.ar">contacto@vitalconsultorios.com.ar</a>
+    </p>
+    <p>Instagram:
+      <a href="https://www.instagram.com/vitalconsultorios" target="_blank">@vitalconsultorios</a>
+    </p>
+  </footer>
+
+  <!-- BOTÓN MODO OSCURO -->
+  <button id="modoOscuroBtn" class="btn btn-secondary position-fixed bottom-0 end-0 m-3" aria-label="Activar o desactivar modo oscuro">Modo oscuro</button>
+
+  <!-- JS Bootstrap + Validación -->
+  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("modoOscuroBtn").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const usuario = document.getElementById("usuario").value.trim();
+      const contrasena = document.getElementById("contrasena").value.trim();
+
+      if (usuario === "admin" && contrasena === "1234") {
+        localStorage.setItem("adminLogueado", "true");
+        window.location.href = "admin.html";
+      } else {
+        document.getElementById("mensajeError").textContent = "USUARIO O CONTRASEÑA INCORRECTO.";
+      }
+    });
+  </script>
+  <script src="js/login.js"></script>
+</body>
+      }
+    });
+  </script>
+  <script src="login.js"></script>
+</body>
