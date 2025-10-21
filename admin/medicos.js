@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.agregarMedico = function () {
+  const especialidadesStorage = JSON.parse(localStorage.getItem("especialidades") || "[]");
+  const obrasSocialesStorage = JSON.parse(localStorage.getItem("obrasSociales") || "[]");
     const formHtml = `
       <div class="card shadow-sm p-4 mb-4 bg-light" id="formMedicoCard">
         <h5 class="mb-3 text-success">Agregar Nuevo Médico</h5>
@@ -117,8 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       medicosStorage.push(nuevoMedico);
       localStorage.setItem("medicos", JSON.stringify(medicosStorage));
-      mostrarMedicos();
       document.getElementById("formMedicoCard").remove();
+      mostrarMedicos();
     });
   };
 
@@ -140,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <div class="col-md-6">
               <label class="form-label">Matrícula profesional:</label>
-              <input type="number" id="nuevoMatricula" class="form-control">
+              <input type="number" id="nuevoMatricula" class="form-control" value="${medico.matricula}">
           </div>
           <div class="col-md-6">
             <label class="form-label">Especialidad:</label>

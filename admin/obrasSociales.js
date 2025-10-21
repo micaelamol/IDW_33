@@ -36,14 +36,14 @@ document.addEventListener("click", (e) => {
 
     if (e.target.dataset.id) {
       const id = parseInt(e.target.dataset.id);
-      const o = obrasStorage.find(o => o.id === id);
+      const o = obrasSocialesStorage.find(o => o.id === id);
       Object.assign(o, { nombre, descripcion });
     } else {
-      const nuevoId = obrasStorage.length > 0
-        ? Math.max(...obrasStorage.map(o => parseInt(o.id) || 0)) + 1
+      const nuevoId = obrasSocialesStorage.length > 0
+        ? Math.max(...obrasSocialesStorage.map(o => parseInt(o.id) || 0)) + 1
         : 1;
 
-      obrasStorage.push({ id: nuevoId, nombre, descripcion });
+      obrasSocialesStorage.push({ id: nuevoId, nombre, descripcion });
     }
     // Guarda en LocalStorage y actualiza 
     localStorage.setItem("obrasSociales", JSON.stringify(obrasSocialesStorage));
@@ -64,7 +64,7 @@ document.addEventListener("click", (e) => {
   if (e.target && e.target.classList.contains("eliminarObraBtn")) {
     const id = parseInt(e.target.dataset.id);
     if (confirm("¿Desea eliminar esta obra social?")) {
-      obrasStorage = obrasSocialesStorage.filter(o => o.id !== id);
+      obrasSocialesStorage = obrasSocialesStorage.filter(o => o.id !== id);
       localStorage.setItem("obrasSociales", JSON.stringify(obrasSocialesStorage));
       mostrarObras();
     }
