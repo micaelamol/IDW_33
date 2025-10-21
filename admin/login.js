@@ -18,14 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const contrasena = document.getElementById("contrasena").value.trim();
       const mensajeError = document.getElementById("mensajeError");
 
-      if (usuario === "1234" && contrasena === "1234") {
+      if (usuario === "admin" && contrasena === "1234") {
         localStorage.setItem("adminLogueado", "true");
         window.location.href = "admin.html";
       } else {
         if (mensajeError) {
-          mensajeError.textContent = "Usuario o contraseña incorrectos.";
+          mensajeError.textContent = "USUARIO O CONTRASEÑA INCORRECTO.";
         } else {
-          alert("Usuario o contraseña incorrectos.");
+          alert("USUARIO O CONTRASEÑA INCORRECTO.");
         }
       }
     });
