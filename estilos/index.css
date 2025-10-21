@@ -8,7 +8,7 @@ body {
 div a img{
   width: 80px;
 }
-/*CARDS #062336 */
+/*CARD*/
 .card {
   border-radius: 10px;
   overflow: hidden;
@@ -186,7 +186,7 @@ body.dark-mode {
   text-decoration: underline;
 }
 .navbar-nav .nav-link:hover {
-  color: #080303; /* color al pasar el mouse */
+  color: #080303; 
   font-size: larger;
 }
 
@@ -218,8 +218,63 @@ body.dark-mode {
 
 .pie_de_portada a:hover {
   text-decoration: underline;
-  color: #080303; /* color al pasar el mouse */
+  color: #080303; 
   
 }
+/*......................................
+/* Botón institucional: Administrador */
+.boton-admin {
+  background-color: #ffc107; 
+  color: #333;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 6px 15px;
+  border-radius: 6px;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
 
+.boton-admin:hover {
+  background-color: #080303 ;
+  color: white ;
+  text-decoration: none;
+}
 
+/* Enlaces del navbar institucional */
+.navbar-principal .nav-link {
+  color: white ;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.navbar-principal .nav-link:hover {
+  color: #080303 ;
+  text-decoration: underline;
+}
+
+.boton-admin:hover {
+  background-color: #080303 ;
+  color: white ;
+  text-decoration: none;
+}
+
+/* Enlaces del navbar institucional */
+.navbar-principal .nav-link {
+  color: white ;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.navbar-principal .nav-link:hover {
+  color: #080303 ;
+  text-decoration: underline;
+}
