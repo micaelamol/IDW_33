@@ -115,14 +115,14 @@
   <script src="medicos.js"></script>
   <script>
     // Verifica si el administrador está logueado
-    if (localStorage.getItem("adminLogueado") !== "true") {
+    if (sessionStorage.getItem("adminLogueado") !== "true") {
       alert("Acceso denegado. Debes iniciar sesión primero.");
       window.location.href = "login.html";
     }
 
     // Cerrar sesión
     function cerrarSesion() {
-      localStorage.removeItem("adminLogueado");
+      sessionStorage.removeItem("adminLogueado");
     }
 
     // Modo oscuro

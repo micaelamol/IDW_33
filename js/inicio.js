@@ -26,5 +26,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 if (sessionStorage.getItem("adminLogueado") === null) {
-  sessionStorage.setItem("adminLogueado", false);
+  sessionStorage.setItem("adminLogueado", 'false');
 }

@@ -17,16 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const usuario = document.getElementById("usuario").value.trim();
       const contrasena = document.getElementById("contrasena").value.trim();
       const mensajeError = document.getElementById("mensajeError");
-
-      if (usuario === "admin" && contrasena === "1234") {
-        localStorage.setItem("adminLogueado", "true");
-        window.location.href = "admin.html";
-      } else {
-        if (mensajeError) {
-          mensajeError.textContent = "USUARIO O CONTRASEÑA INCORRECTO.";
-        } else {
-          alert("USUARIO O CONTRASEÑA INCORRECTO.");
+      for (let user of usuarios) {
+        
+        if (usuario === user.usuario && contrasena === user.contrasena) {
+          sessionStorage.setItem("adminLogueado", "true");
+          window.location.href = "admin.html";
         }
+      }
+      if (mensajeError) {
+        mensajeError.textContent = "USUARIO O CONTRASEÑA INCORRECTO.";
+      } else {
+        alert("USUARIO O CONTRASEÑA INCORRECTO.");
       }
     });
   }

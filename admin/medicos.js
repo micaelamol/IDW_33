@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     especialidadesStorage = JSON.parse(
       localStorage.getItem("especialidades") || "[]"
     );
-    console.log("especialidadesStorage: " + especialidadesStorage);
+    
     obrasSocialesStorage = JSON.parse(
       localStorage.getItem("obrasSociales") || "[]"
     );
