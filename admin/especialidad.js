@@ -43,7 +43,7 @@ function mostrarFormularioEspecialidad(especialidad = null) {
     <div class="card p-4 bg-light mb-4">
       <h5 class="mb-3">${especialidad ? "Editar Especialidad" : "Nueva Especialidad"}</h5>
       <div class="mb-3">
-        <label class="form-label">Nombre:</label>
+        <label for="nombreEspecialidad" class="form-label">Nombre:</label>
         <input type="text" id="nombreEspecialidad" class="form-control" value="${especialidad ? especialidad.nombre : ""}">
       </div>
       <div>
