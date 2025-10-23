@@ -22,9 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (usuario === user.usuario && contrasena === user.contrasena) {
           sessionStorage.setItem("adminLogueado", "true");
           window.location.href = "admin.html";
+          return
         }
       }
-      if (mensajeError) {
+      if (mensajeError && sessionStorage.getItem("adminLogueado") !== 'true') {
         mensajeError.textContent = "USUARIO O CONTRASEÑA INCORRECTO.";
       } else {
         alert("USUARIO O CONTRASEÑA INCORRECTO.");
