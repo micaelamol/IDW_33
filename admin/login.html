@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Administrador - Vital Consultorios</title>
-    <link href="../bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link
+      href="../bootstrap-5.3.8-dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../estilos/index.css" />
   </head>
 
@@ -128,16 +131,25 @@
     </footer>
 
     <!-- BOTÓN MODO OSCURO -->
-    <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
- 		<button id="toggleTheme" class="btn btn-secondary position-fixed bottom-0 end-0 m-3 z-3"> Modo oscuro </button>
-			<script>
-  				const html = document.documentElement;
-  				const toggle = document.getElementById('toggleTheme');
+    <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <button
+      id="toggleTheme"
+      class="btn btn-secondary position-fixed bottom-0 end-0 m-3 z-3"
+    >
+      Modo oscuro
+    </button>
+    <script>
+      const html = document.documentElement;
+      const toggle = document.getElementById("toggleTheme");
 
-  				toggle.addEventListener('click', () => {
-    			const actual = html.getAttribute('data-bs-theme');
-    			html.setAttribute('data-bs-theme', actual === 'dark' ? 'light' : 'dark');});
-	</script>
+      toggle.addEventListener("click", () => {
+        const actual = html.getAttribute("data-bs-theme");
+        html.setAttribute(
+          "data-bs-theme",
+          actual === "dark" ? "light" : "dark"
+        );
+      });
+    </script>
 
     <script src="../js/config.js"></script>
     <script src="login.js"></script>
