@@ -8,11 +8,11 @@ function mostrarFormularioObra(obra = null) {
       <h4 class="mb-3 text-${obra ? "warning" : "primary"}">${obra ? "Editar Obra Social" : "Nueva Obra Social"}</h5>
       <div class="row g-3">
         <div class="col-md-6">
-          <label class="form-label">Nombre:</label>
+          <label class="form-label" for='nombreObra'>Nombre:</label>
           <input type="text" id="nombreObra" class="form-control" value="${obra ? obra.nombre : ""}">
         </div>
         <div class="col-md-6">
-          <label class="form-label">Descripción:</label>
+          <label class="form-label" for='descripcionObra'>Descripción:</label>
           <textarea id="descripcionObra" class="form-control">${obra ? obra.descripcion : ""}</textarea>
         </div>
       </div>

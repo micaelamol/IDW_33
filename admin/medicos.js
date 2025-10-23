@@ -80,19 +80,19 @@ document.addEventListener("DOMContentLoaded", () => {
         <h5 class="mb-3 text-success">Agregar Nuevo Médico</h5>
         <div class="row g-3">
           <div class="col-md-6">
-            <label class="form-label">Nombre:</label>
+            <label class="form-label" for='nuevoNombre'>Nombre:</label>
             <input type="text" id="nuevoNombre" class="form-control">
           </div>
           <div class="col-md-6">
-            <label class="form-label">Apellido:</label>
+            <label class="form-label" for='nuevoApellido'>Apellido:</label>
             <input type="text" id="nuevoApellido" class="form-control">
           </div>
           <div class="col-md-6">
-              <label class="form-label">Matrícula:</label>
+              <label class="form-label" for='nuevoMatricula'>Matrícula:</label>
               <input type="number" id="nuevoMatricula" class="form-control">
           </div>
           <div class="col-md-6">
-            <label class="form-label">Especialidad:</label>
+            <label class="form-label" for='nuevoEspecialidad'>Especialidad:</label>
             <select id="nuevoEspecialidad" class="form-select">
               ${especialidadesStorage
                 .map((e) => `<option value="${e.id}">${e.nombre}</option>`)
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </select>
           </div>
           <div class="col-md-6">
-            <label class="form-label">Obras Sociales:</label>
+            <label class="form-label" for='nuevoObrasSociales'>Obras Sociales:</label>
             <select id="nuevoObrasSociales" class="form-select" multiple>
               ${obrasSocialesStorage
                 .map((o) => `<option value="${o.id}">${o.nombre}</option>`)
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="form-text">Usá Ctrl (o Cmd) para seleccionar varias.</div>
           </div>
           <div class="col-md-6">
-            <label class="form-label">Valor de consulta:</label>
+            <label class="form-label" for='nuevoValor'>Valor de consulta:</label>
             <input type="number" id="nuevoValor" class="form-control">
           </div>
         </div>
@@ -190,25 +190,25 @@ document.addEventListener("DOMContentLoaded", () => {
         <h5 class="mb-3 text-warning">Editar Médico</h5>
         <div class="row g-3">
           <div class="col-md-6">
-            <label class="form-label">Nombre:</label>
+            <label class="form-label" for='nuevoNombre'>Nombre:</label>
             <input type="text" id="nuevoNombre" class="form-control" value="${
               medico.nombre
             }">
           </div>
           <div class="col-md-6">
-            <label class="form-label">Apellido:</label>
+            <label class="form-label" for='nuevoApellido'>Apellido:</label>
             <input type="text" id="nuevoApellido" class="form-control" value="${
               medico.apellido
             }">
           </div>
           <div class="col-md-6">
-              <label class="form-label">Matrícula profesional:</label>
+              <label class="form-label" for='nuevoMatricula'>Matrícula profesional:</label>
               <input type="number" id="nuevoMatricula" class="form-control" value="${
                 medico.matricula
               }">
           </div>
           <div class="col-md-6">
-            <label class="form-label">Especialidad:</label>
+            <label class="form-label" for='nuevoEspecialidad'>Especialidad:</label>
             <select id="nuevoEspecialidad" class="form-select">
               ${especialidadesStorage
                 .map(
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </select>
           </div>
           <div class="col-md-6">
-            <label class="form-label">Obras Sociales:</label>
+            <label class="form-label" for='nuevoObrasSociales'>Obras Sociales:</label>
             <select id="nuevoObrasSociales" class="form-select" multiple>
               ${obrasSocialesStorage
                 .map(
@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="form-text">Usá Ctrl (o Cmd) para seleccionar varias.</div>
           </div>
           <div class="col-md-6">
-            <label class="form-label">Valor de consulta:</label>
+            <label class="form-label" for='nuevoValor'>Valor de consulta:</label>
             <input type="number" id="nuevoValor" class="form-control" value="${
               medico.valorConsulta
             }">
