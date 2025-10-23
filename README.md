@@ -60,3 +60,13 @@ Contiene información de contacto, dirección, teléfono, email e Instagram del 
 Tecnologías utilizadas
 -HTML5 y CSS3.
 -Bootstrap 5 para grillas, cards, navbar y responsividad
+
+## TP2: 3er ETAPA TRABAJO FINAL INTEGRADOR 
+
+- Las cards del staff fueron pasadas a una constante en staff.js para ser cargadas dinamicamente en index.htm desde el archivo inicio.js
+
+- Se realizo un login para el ingreso al area de administracion, utiliza un archivo config.js para almacenar los usuarios y contraseñas habilitadas, establece una variable en sesionstorage para el control de sesion
+
+- El acceso no autorizado esta bloqueado en admin.html, este maneja el abm de medicos, especialidades y obra social a traves de los archivos javascript correspondientes almacenando en localstorage los cambios
+
+- El area de reservas y turnos esta aun en desarrollo
