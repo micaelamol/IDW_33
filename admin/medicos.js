@@ -112,6 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
             <label class="form-label" for='nuevoValor'>Valor de consulta:</label>
             <input type="number" id="nuevoValor" class="form-control">
           </div>
+
+        
+          <div class="col-md-6">
+            <label class="form-label" for="nuevoFoto">Foto del médico:</label>
+            <input type="file" id="nuevoFoto" class="form-control" accept="image/*">
+          </div>
+
+
         </div>
         <div class="mt-4">
           <button class="btn btn-success me-2" id="guardarMedicoBtn">Guardar Médico</button>
@@ -164,6 +172,10 @@ document.addEventListener("DOMContentLoaded", () => {
             ? Math.max(...medicosStorage.map((m) => parseInt(m.id) || 0)) + 1
             : 1;
 
+        const fotoInput = document.getElementById("nuevoFoto");
+        const fotoFile = fotoInput?.files[0];
+        const fotoNombre = fotoFile ? fotoFile.name : null;
+
         const nuevoMedico = {
           id: nuevoId,
           nombre,
@@ -172,6 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
           especialidad,
           obrasSociales: obrasSeleccionadas,
           valorConsulta,
+          foto: fotoNombre
         };
 
         medicosStorage.push(nuevoMedico);
@@ -246,6 +259,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <button class="btn btn-secondary" id="cancelarMedicoBtn">Cancelar</button>
         </div>
       </div>
+
+      
     `;
 
     medicosTab.insertAdjacentHTML("afterbegin", formHtml);
