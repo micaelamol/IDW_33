@@ -15,6 +15,10 @@ function mostrarFormularioObra(obra = null) {
           <label class="form-label" for='descripcionObra'>Descripción:</label>
           <textarea id="descripcionObra" class="form-control">${obra ? obra.descripcion : ""}</textarea>
         </div>
+        <div class="col-md-6">
+          <label class="form-label" for='porcentajeObra'>Porcentaje de descuento (%):</label>
+          <input type="number" id="porcentajeObra" class="form-control" min="0" max="100" value="${obra ? obra.porcentaje : 0}">
+          </div>
       </div>
       <div class="mt-4">
         <button class="btn btn-${obra ? "warning" : "success"} me-2" id="guardarObraBtn">${obra ? "Guardar Cambios" : "Agregar Obra"}</button>
@@ -33,17 +37,21 @@ document.addEventListener("click", (e) => {
       alert("Complete todos los campos");
       return;
     }
-
+    const porcentaje = parseFloat(document.getElementById("porcentajeObra").value);
+    if (isNaN(porcentaje) || porcentaje < 0 || porcentaje > 100) {
+      alert("El porcentaje debe estar entre 0 y 100.");
+      return;
+    }
     if (e.target.dataset.id) {
       const id = parseInt(e.target.dataset.id);
       const o = obrasSocialesStorage.find(o => o.id === id);
-      Object.assign(o, { nombre, descripcion });
+      Object.assign(o, { nombre, descripcion, porcentaje });
     } else {
       const nuevoId = obrasSocialesStorage.length > 0
         ? Math.max(...obrasSocialesStorage.map(o => parseInt(o.id) || 0)) + 1
         : 1;
 
-      obrasSocialesStorage.push({ id: nuevoId, nombre, descripcion });
+      obrasSocialesStorage.push({ id: nuevoId, nombre, descripcion,porcentaje });
     }
     // Guarda en LocalStorage y actualiza 
     localStorage.setItem("obrasSociales", JSON.stringify(obrasSocialesStorage));
@@ -84,6 +92,7 @@ function mostrarObras() {
             <th>ID</th>
             <th>Nombre</th>
             <th>Descripción</th>
+            <th>Descuento (%)</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -93,6 +102,7 @@ function mostrarObras() {
               <td>${o.id}</td>
               <td>${o.nombre}</td>
               <td>${o.descripcion}</td>
+              <td>${o.porcentaje ?? 0}%</td>
               <td>
                 <button class="btn btn-warning btn-sm me-1 editarObraBtn" data-id="${o.id}">Editar</button>
                 <button class="btn btn-danger btn-sm eliminarObraBtn" data-id="${o.id}">Eliminar</button>

@@ -57,7 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const medico = medicos.find(m => m.id === idMedico);
     const especialidad = especialidades.find(e => e.id === idEspecialidad);
     const obraSocial = obrasSociales.find(o => o.id === idObraSocial);
+    const porcentajeDescuento = obraSocial.porcentaje || 0;
     const valorConsulta = medico.valorConsulta;
+    const valorTotal = valorConsulta - (valorConsulta * porcentajeDescuento / 100);
 
     const nuevaReserva = {
       id: reservas.length > 0 ? Math.max(...reservas.map(r => r.id)) + 1 : 1,
@@ -67,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
       especialidad: idEspecialidad,
       obraSocial: idObraSocial,
       fechaHora,
-      valorTotal: valorConsulta
+      valorTotal: valorTotal
     };
 
     reservas.push(nuevaReserva);
@@ -97,7 +99,18 @@ document.addEventListener("DOMContentLoaded", () => {
               <td>${especialidad.nombre}</td>
               <td>${obraSocial.nombre}</td>
               <td>${new Date(fechaHora).toLocaleString()}</td>
-              <td>$${valorConsulta}</td>
+              <tr>
+              <td colspan="6" class="text-end fw-semibold">Valor original de la consulta:</td>
+              <td>$${valorConsulta.toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td colspan="6" class="text-end fw-semibold">Descuento (${porcentajeDescuento}%):</td>
+                 <td>-$${(valorConsulta * porcentajeDescuento / 100).toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td colspan="6" class="text-end fw-bold">Total a pagar:</td>
+                <td class="fw-bold text-primary">$${valorTotal.toFixed(2)}</td>
+              </tr>
             </tr>
           </tbody>
         </table>
