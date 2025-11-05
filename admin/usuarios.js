@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const usuarios = await fetch("https://dummyjson.com/users");
-    console.log(usuarios.ok);
+    
     if (usuarios.ok) {
       const datos = await usuarios.json();
-      console.log(datos.users);
+      
 
       const tabla = document.querySelector("#usuarios tbody");
-      console.log(tabla);
+      
       datos.users.forEach((element) => {
         const trId = document.createElement("tr");
         
