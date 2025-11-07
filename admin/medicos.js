@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <table class="table table-bordered table-hover align-middle">
           <thead class="table-dark">
             <tr>
-              <th>ID</th><th>Nombre</th><th>Apellido</th><th>Matrícula</th><th>Especialidad</th><th>Obras Sociales</th><th>Valor Consulta</th><th>Acciones</th>
+              <th>ID</th><th>Nombre</th><th>Apellido</th><th>Matrícula</th><th>Especialidad</th><th>Obras Sociales</th><th>Valor Consulta</th><th>Foto</th><th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -48,13 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
                   )
                   .join(", ")}</td>
                 <td>$${m.valorConsulta}</td>
+                <td><img src='${m.foto}'  style="width: 30px; height: 30px;"></td>
                 <td>
-                  <button class="btn btn-warning btn-sm me-1" onclick="editarMedico(${
+                  <button class="btn btn-warning btn-sm me-1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Editar" onclick="editarMedico(${
                     m.id
-                  })">Editar</button>
+                  })"><i class="bi bi-pencil"></i></button>
                   <button class="btn btn-danger btn-sm" onclick="eliminarMedico(${
                     m.id
-                  })">Eliminar</button>
+                  })"><i class="bi bi-person-x"></i></button>
                 </td>
               </tr>
             `
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     especialidadesStorage = JSON.parse(
       localStorage.getItem("especialidades") || "[]"
     );
-    
+
     obrasSocialesStorage = JSON.parse(
       localStorage.getItem("obrasSociales") || "[]"
     );
@@ -130,6 +131,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     medicosTab.insertAdjacentHTML("afterbegin", formHtml);
 
+    const fotoInput = document.getElementById("nuevoFoto");
+    /* fotoABase64 llama a una funcion que pasa la foto del input a base64, y lo almacena en una variable localstorage */
+    fotoABase64(fotoInput);
+    
+
     document
       .getElementById("cancelarMedicoBtn")
       .addEventListener("click", () => {
@@ -172,9 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ? Math.max(...medicosStorage.map((m) => parseInt(m.id) || 0)) + 1
             : 1;
 
-        const fotoInput = document.getElementById("nuevoFoto");
-        const fotoFile = fotoInput?.files[0];
-        const fotoNombre = fotoFile ? fotoFile.name : null;
+        
 
         const nuevoMedico = {
           id: nuevoId,
@@ -184,9 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
           especialidad,
           obrasSociales: obrasSeleccionadas,
           valorConsulta,
-          foto: fotoNombre
+          foto: localStorage.getItem("base64"),
         };
-
+        localStorage.removeItem("base64");
         medicosStorage.push(nuevoMedico);
         localStorage.setItem("medicos", JSON.stringify(medicosStorage));
         document.getElementById("formMedicoCard").remove();
@@ -265,6 +269,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     medicosTab.insertAdjacentHTML("afterbegin", formHtml);
 
+    const fotoInput = document.getElementById("nuevoFoto");
+    /* fotoABase64 llama a una funcion que pasa la foto del input a base64, y lo almacena en una variable localstorage */
+    fotoABase64(fotoInput);
+    
+
     document
       .getElementById("cancelarMedicoBtn")
       .addEventListener("click", () => {
@@ -324,3 +333,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   mostrarMedicos();
 });
+
+function fotoABase64(foto){
+      foto.addEventListener("change", function (event) {
+      const read = new FileReader();
+      read.onloadend = () => {
+        console.log(read.result);
+        localStorage.setItem("base64", read.result);
+      };
+
+      read.readAsDataURL(event.target.files[0]);
+    });
+    }
