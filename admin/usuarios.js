@@ -1,41 +1,30 @@
+
 document.addEventListener("DOMContentLoaded", async () => {
+  const tablaUsuariosBody = document.querySelector('#tablaUsuarios tbody');
   try {
-    const usuarios = await fetch("https://dummyjson.com/users");
-    
-    if (usuarios.ok) {
-      const datos = await usuarios.json();
-      
+    const response = await fetch('https://dummyjson.com/users');
+    if (response.ok) {
+      const data = await response.json();
+      const usuarios = data.users;
 
-      const tabla = document.querySelector("#usuarios tbody");
-      
-      datos.users.forEach((element) => {
-        const trId = document.createElement("tr");
-        
-
-        trId.appendChild(celda(element.id));
-        trId.appendChild(celda(element.firstName));
-        trId.appendChild(celda(element.lastName));
-        trId.appendChild(celda(element.email, "medio"));
-        trId.appendChild(celda(element.phone));
-        tabla.appendChild(trId);
-      })
-    }else{
-      console.log('error en la operacion ',usuarios.status);
+      usuarios.forEach(element => {
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+          <td>${element.id}</td>
+          <td>${element.firstName}</td>
+          <td>${element.lastName}</td>
+          <td>${element.username}</td>
+          <td>${element.email}</td>
+          <td>${element.phone}</td>
+        `;
+        tablaUsuariosBody.appendChild(fila);
+      });
+    } else {
+      console.error("Estado de respuesta:", response.status);
+      throw new Error("Error al cargar usuarios");
     }
-    
   } catch (error) {
-    console.log("fallo la operacion: ", error);
+    console.error("Error en la API Dummy:", error);
+    alert("Error en la API Dummy");
   }
 });
-
-function celda(valor,estilo="") {
-  
-  const td = document.createElement("td");
-  td.textContent = valor;
-  if (estilo === "medio") {
-    
-    td.className = "medio";
-    
-  }
-  return td;
-};

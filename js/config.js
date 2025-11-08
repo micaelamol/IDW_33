@@ -1,9 +1,9 @@
-const usuarios = [
+/*const usuarios = [
   {
-    usuario: "admin",
+    usuario: "superadmin",
     contrasena: "1234",
   },
-  {
+ {
     usuario: "seba",
     contrasena: "seba",
   },
@@ -15,4 +15,5 @@ const usuarios = [
     usuario: "mica",
     contrasena: "mica",
   },
-];
+  ];*/
+

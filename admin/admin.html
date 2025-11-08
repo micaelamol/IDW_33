@@ -114,21 +114,32 @@
   <script src="obrasSociales.js"></script>
   <script src="medicos.js"></script>
   <script>
-    // Verifica si el administrador está logueado
-    if (sessionStorage.getItem("adminLogueado") !== "true") {
-      alert("Acceso denegado. Debes iniciar sesión primero.");
-      window.location.href = "login.html";
-    }
+  // Verifica si el administrador está logueado
+  const username = sessionStorage.getItem("adminLogueado");
+  const token = sessionStorage.getItem("token");
 
-    // Cerrar sesión
-    function cerrarSesion() {
-      sessionStorage.removeItem("adminLogueado");
-    }
+  if (!username || !token) {
+    alert("Acceso denegado. Debes iniciar sesión primero.");
+    window.location.href = "login.html";
+  } else {
+    // Mostrar mensaje de bienvenida
+    const bienvenida = document.createElement("p");
+    bienvenida.textContent = `Bienvenido, ${username}`;
+    document.querySelector(".portada").appendChild(bienvenida);
+  }
 
-    // Modo oscuro
-    document.getElementById("modoOscuroBtn").addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-    });
-  </script>
+  // Cerrar sesión
+  function cerrarSesion() {
+    sessionStorage.removeItem("adminLogueado");
+    sessionStorage.removeItem("token");
+    window.location.href = "login.html";
+  }
+
+  // Modo oscuro
+  document.getElementById("modoOscuroBtn").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+</script>
+
 </body>
 </html>

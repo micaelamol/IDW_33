@@ -1,34 +1,49 @@
+
+import { login } from "./auth.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
-  const modoOscuroBtn = document.getElementById("modoOscuroBtn");
+  const mensajeError = document.getElementById("mensajeError");
 
-  // Activar modo oscuro
-  if (modoOscuroBtn) {
-    modoOscuroBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-    });
+  // Función para mostrar errores en pantalla
+  function mostrarError(texto) {
+    if (mensajeError) {
+      mensajeError.textContent = texto;
+    } else {
+      alert(texto);
+    }
   }
 
-  // Validación del login
   if (loginForm) {
-    loginForm.addEventListener("submit", function (e) {
+    loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const usuario = document.getElementById("usuario").value.trim();
-      const contrasena = document.getElementById("contrasena").value.trim();
-      const mensajeError = document.getElementById("mensajeError");
-      for (let user of usuarios) {
-        
-        if (usuario === user.usuario && contrasena === user.contrasena) {
-          sessionStorage.setItem("adminLogueado", "true");
-          window.location.href = "admin.html";
-          return
-        }
+      const usuarioInput = document.getElementById("usuario").value.trim();
+      const claveInput = document.getElementById("contrasena").value.trim();
+
+      if (!usuarioInput || !claveInput) {
+        mostrarError("Por favor, complete todos los campos.");
+        return;
       }
-      if (mensajeError && sessionStorage.getItem("adminLogueado") !== 'true') {
-        mensajeError.textContent = "USUARIO O CONTRASEÑA INCORRECTO.";
-      } else {
-        alert("USUARIO O CONTRASEÑA INCORRECTO.");
+
+      try {
+        const userRemoto = await login(usuarioInput, claveInput);
+
+        console.log("userRemoto completo:", userRemoto);
+        console.log("Token:", userRemoto.accessToken);
+        console.log("Username:", userRemoto.username);
+
+        // Guardar token y usuario si login fue exitoso
+        if (userRemoto && userRemoto.accessToken) {
+          sessionStorage.setItem("adminLogueado", userRemoto.username);
+          sessionStorage.setItem("token", userRemoto.accessToken);
+          // Redirigir a admin.html
+          window.location.href = "admin.html";
+        } else {
+          mostrarError("Usuario o contraseña incorrectos.");
+        }
+      } catch (error) {
+        mostrarError(error.message || "Error de conexión. Intente más tarde.");
       }
     });
   }
