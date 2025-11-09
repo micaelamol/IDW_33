@@ -40,7 +40,6 @@
     <p class="p-2 p-md-3 p-lg-4">
       Gestioná médicos, especialidades y obras sociales de <strong>Vital Consultorios</strong>.
     </p>
-    
   </section>
 
   <!-- TABS ADMINISTRATIVAS -->
@@ -55,6 +54,12 @@
       <li class="nav-item">
         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#obrasTab" type="button">Obras Sociales</button>
       </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#turnosTab" type="button">Turnos</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#reservasTab" type="button">Reservas</button>
+      </li>
     </ul>
 
     <div class="tab-content" id="adminTabsContent">
@@ -66,7 +71,6 @@
             <i class="bi bi-person-plus-fill"></i> Agregar Médico
           </button>
         </div>
-        
       </div>
 
       <!-- ESPECIALIDADES -->
@@ -77,7 +81,6 @@
             <i class="bi bi-plus-circle-fill"></i> Nueva Especialidad
           </button>
         </div>
-       
       </div>
 
       <!-- OBRAS SOCIALES -->
@@ -88,9 +91,71 @@
             <i class="bi bi-hospital-fill"></i> Agregar Obra Social
           </button>
         </div>
-        
+      </div>
+
+      <!-- TURNOS -->
+      <div class="tab-pane fade" id="turnosTab">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-primary">Agenda de Turnos</h4>
+          <div class="d-flex gap-2">
+            
+            <button onclick="borrarTodosLosTurnos()" class="btn btn-danger btn-sm shadow-sm">
+              <i class="bi bi-trash3"></i> Borrar Turnos
+            </button>
+          </div>
+        </div>
+
+        <div id="mensajeTurnos" class="mb-3"></div>
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Médico</th>
+                <th>Hora</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaTurnosBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- RESERVAS -->
+    <div class="tab-pane fade" id="reservasTab">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-primary mb-0">Reservas Confirmadas</h4>
+      <div class="d-flex gap-2">
+        <button class="btn btn-info btn-sm" onclick="exportarReservasExcel()">
+          <i class="bi bi-file-earmark-excel"></i> Exportar a Excel
+        </button>
+        <button class="btn btn-warning btn-sm" onclick="exportarReservasPDF()">
+          <i class="bi bi-file-earmark-pdf"></i> Exportar a PDF
+        </button>
       </div>
     </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th>Paciente</th>
+              <th>Documento</th>
+              <th>Médico</th>
+              <th>Especialidad</th>
+              <th>Obra Social</th>
+              <th>Fecha y Hora</th>
+              <th>Monto</th>
+            </tr>
+          </thead>
+        <tbody id="tablaReservasBody"></tbody>
+      </table>
+      </div>
+     </div>
+      
+    </div>
+    
   </main>
 
   <!-- FOOTER INSTITUCIONAL -->
@@ -109,10 +174,16 @@
   <button id="modoOscuroBtn" class="btn btn-secondary position-fixed bottom-0 end-0 m-3" aria-label="Activar o desactivar modo oscuro">Modo oscuro</button>
 
   <!-- SCRIPTS -->
+  
   <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   <script src="especialidad.js"></script>
   <script src="obrasSociales.js"></script>
   <script src="medicos.js"></script>
+  <script src="generarTurnos.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script src="reservasAdmin.js"></script>
   <script>
   // Verifica si el administrador está logueado
   const username = sessionStorage.getItem("adminLogueado");
@@ -135,9 +206,45 @@
     window.location.href = "login.html";
   }
 
+  
   // Modo oscuro
   document.getElementById("modoOscuroBtn").addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("dark-mode");    
+  });
+</script>
+
+<script>
+  function renderReservas() {
+    const tablaBody = document.getElementById("tablaReservasBody");
+    const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
+    const medicos = JSON.parse(localStorage.getItem("medicos") || "[]");
+
+    if (!tablaBody) return;
+
+    if (reservas.length === 0) {
+      tablaBody.innerHTML = `<tr><td colspan="7" class="text-center text-muted">No hay reservas confirmadas.</td></tr>`;
+      return;
+    }
+
+    tablaBody.innerHTML = reservas.map(r => {
+      const medico = medicos.find(m => m.id === r.medicoId);
+      return `
+        <tr>
+          <td>${r.nombre}</td>
+          <td>${r.documento}</td>
+          <td>${medico ? medico.nombre + " " + medico.apellido : "Desconocido"}</td>
+          <td>${r.especialidad}</td>
+          <td>${r.obraSocial}</td>
+          <td>${new Date(r.fechaHora).toLocaleString()}</td>
+          <td>$${r.monto.toFixed(2)}</td>
+        </tr>
+      `;
+    }).join("");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderTabla(); 
+    renderReservas(); 
   });
 </script>
 
