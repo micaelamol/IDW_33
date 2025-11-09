@@ -45,6 +45,7 @@ function exportarReservasPDF() {
 // Función para exportar las reservas a Excel
 function exportarReservasExcel() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
+  const medico = JSON.parse(localStorage.getItem('medicos')) || [];
 
   if (reservas.length === 0) {
     alert("No hay reservas para exportar.");
@@ -54,7 +55,7 @@ function exportarReservasExcel() {
   const datos = reservas.map(r => ({
     Paciente: r.nombre,
     Documento: r.documento,
-    Médico: r.medicoNombre || "Desconocido",
+    Médico: medico.find(m=> m.id === r.medicoId).nombre+' '+ medico.find(m=> m.id === r.medicoId).apellido || "Desconocido",
     Especialidad: r.especialidad,
     "Obra Social": r.obraSocial,
     "Fecha y Hora": new Date(r.fechaHora).toLocaleString("es-AR"),
