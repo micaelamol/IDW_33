@@ -1,3 +1,8 @@
+if (typeof Storage === "undefined") {
+  alert("Tu navegador no permite almacenamiento local.");
+  throw new Error("Storage no disponible");
+}
+
 // Función para exportar las reservas a PDF
 function exportarReservasPDF() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
@@ -104,7 +109,7 @@ function filtrarReservasPorFecha(fechaInicio, fechaFin) {
 
 //  Mostrar reservas en tabla
 function mostrarReservas(reservas = null) {
-  const tabla = document.getElementById("tablaReservas");
+  const tabla = document.getElementById("tablaReservasBody");
   const lista = reservas || JSON.parse(localStorage.getItem("reservas") || "[]");
   tabla.innerHTML = "";
 
