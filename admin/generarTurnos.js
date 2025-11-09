@@ -12,8 +12,8 @@ function generarAgendaTurnos(medicos) {
   let idTurno = 1;
 
   for (let d = 0; d < dias; d++) {
-    const fechaActual = new Date(fechaInicio);
-    fechaActual.setDate(fechaInicio.getDate() + d);
+  const fechaActual = new Date(fechaInicio.getTime());
+  fechaActual.setDate(fechaActual.getDate() + d);
 
     const fechaISO = fechaActual.toISOString().slice(0, 10);
     const diaSemana = fechaActual.getDay();
@@ -100,15 +100,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join("");
   }
 
-  window.eliminarTurno = function(id) {
-    const index = window.turnos.findIndex(t => t.id === id);
-    if (index !== -1) {
-      window.turnos.splice(index, 1);
-      localStorage.setItem("turnos", JSON.stringify(window.turnos));
-      renderTabla();
-    }
-  };
+ window.eliminarTurno = function(id) {
+  const index = window.turnos.findIndex(t => t.id === id);
+  if (index !== -1) {
+    const turnoEliminado = window.turnos[index];
+    window.turnos.splice(index, 1);
+    localStorage.setItem("turnos", JSON.stringify(window.turnos));
 
+    // Eliminar reservas asociadas al turno
+    let reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
+    const fechaTurno = turnoEliminado.fechaHora;
+    const medicoId = turnoEliminado.medico;
+
+    reservas = reservas.filter(r => !(r.fechaHora === fechaTurno && r.medicoId === medicoId));
+    localStorage.setItem("reservas", JSON.stringify(reservas));
+
+    renderTabla();
+    mostrarReservas(); 
+  }
+};
   window.renderTabla = renderTabla;
   renderTabla();
 });

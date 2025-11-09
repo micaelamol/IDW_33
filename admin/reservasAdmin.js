@@ -84,7 +84,7 @@ function borrarReservasViejas() {
   }
 }
 
-// Filtrar reservas por rango de fecha
+
 function filtrarReservasPorFecha(fechaInicio, fechaFin) {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
 
@@ -93,19 +93,25 @@ function filtrarReservasPorFecha(fechaInicio, fechaFin) {
     return;
   }
 
+  // Convertir fechas del input a objetos Date
   const inicio = new Date(fechaInicio);
   const fin = new Date(fechaFin);
+  fin.setHours(23, 59, 59, 999); 
+
+  // Filtrar reservas dentro del rango
   const filtradas = reservas.filter(r => {
     const fechaReserva = new Date(r.fechaHora);
     return fechaReserva >= inicio && fechaReserva <= fin;
   });
 
+  // Mostrar resultado
   if (filtradas.length === 0) {
     alert("No hay reservas en el rango seleccionado.");
   }
 
   mostrarReservas(filtradas);
 }
+
 
 //  Mostrar reservas en tabla
 function mostrarReservas(reservas = null) {
