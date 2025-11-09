@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -11,17 +12,12 @@
   <!-- NAVBAR -->
   <nav class="navbar navbar-principal navbar-expand-sm fixed-top shadow-sm">
     <div class="container-fluid">
-      <!-- Logo -->
       <a class="navbar-brand" href="../index.html">
         <img src="../imagenes/Logo.jpg" alt="Logo Vital Consultorios" class="rounded-circle border" />
       </a>
-
-      <!-- Título centrado -->
       <div class="d-flex justify-content-center w-100">
-  		<span class="titulo-navbar">Vital Consultorios</span>
-	  </div>
-
-      <!-- Enlace de Inicio -->
+        <span class="titulo-navbar">Vital Consultorios</span>
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,10 +25,7 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link text-white fw-semibold" href="../index.html">Inicio</a>
-
-            
           </li>
-          
         </ul>
       </div>
     </div>
@@ -41,7 +34,6 @@
   <!-- PORTADA -->
   <section class="portada d-flex flex-column align-items-center justify-content-center text-center">
     <h3 class="fs-4 fs-sm-3 fs-md-2 fs-lg-1">Reservá tu turno médico</h3>
-    
     <p class="p-2 p-md-3 p-lg-4">
       En <strong>Vital Consultorios</strong> podés agendar tu consulta con nuestros profesionales de forma rápida y segura.
     </p>
@@ -73,8 +65,8 @@
         <select id="obraSocialSelect" class="form-select" required></select>
       </div>
       <div class="col-md-6">
-        <label class="form-label fw-semibold">Fecha y Hora:</label>
-        <input type="datetime-local" id="fechaHora" class="form-control" required />
+        <label class="form-label fw-semibold">Turno disponible:</label>
+        <select id="turnoSelect" class="form-select" required></select>
       </div>
       <div class="col-12 mt-3 text-center">
         <button type="submit" class="btn btn-success me-2">Confirmar Reserva</button>
@@ -100,7 +92,7 @@
   <!-- BOTÓN MODO OSCURO -->
   <button id="modoOscuroBtn" class="btn btn-secondary position-fixed bottom-0 end-0 m-3" aria-label="Activar o desactivar modo oscuro">Modo oscuro</button>
 
-  <!-- JS Boo -->
+  <!-- JS -->
   <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('modoOscuroBtn').addEventListener('click', () => {
@@ -108,5 +100,8 @@
     });
   </script>
   <script src="reservas.js"></script>
+</body>
+</html>
+
 </body>
 </html>

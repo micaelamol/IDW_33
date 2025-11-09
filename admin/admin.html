@@ -45,21 +45,11 @@
   <!-- TABS ADMINISTRATIVAS -->
   <main class="container my-5">
     <ul class="nav nav-tabs mb-3" id="adminTabs" role="tablist">
-      <li class="nav-item">
-        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#medicos" type="button">Médicos</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#especialidades" type="button">Especialidades</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#obrasTab" type="button">Obras Sociales</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#turnosTab" type="button">Turnos</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#reservasTab" type="button">Reservas</button>
-      </li>
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#medicos" type="button">Médicos</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#especialidades" type="button">Especialidades</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#obrasTab" type="button">Obras Sociales</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#turnosTab" type="button">Turnos</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#reservasTab" type="button">Reservas</button></li>
     </ul>
 
     <div class="tab-content" id="adminTabsContent">
@@ -97,16 +87,11 @@
       <div class="tab-pane fade" id="turnosTab">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h4 class="text-primary">Agenda de Turnos</h4>
-          <div class="d-flex gap-2">
-            
-            <button onclick="borrarTodosLosTurnos()" class="btn btn-danger btn-sm shadow-sm">
-              <i class="bi bi-trash3"></i> Borrar Turnos
-            </button>
-          </div>
+          <button onclick="borrarTodosLosTurnos()" class="btn btn-danger btn-sm shadow-sm">
+            <i class="bi bi-trash3"></i> Borrar Turnos
+          </button>
         </div>
-
         <div id="mensajeTurnos" class="mb-3"></div>
-
         <div class="table-responsive">
           <table class="table table-bordered table-striped">
             <thead class="table-dark">
@@ -122,43 +107,71 @@
           </table>
         </div>
       </div>
-      <!-- RESERVAS -->
-    <div class="tab-pane fade" id="reservasTab">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="text-primary mb-0">Reservas Confirmadas</h4>
-      <div class="d-flex gap-2">
-        <button class="btn btn-info btn-sm" onclick="exportarReservasExcel()">
-          <i class="bi bi-file-earmark-excel"></i> Exportar a Excel
-        </button>
-        <button class="btn btn-warning btn-sm" onclick="exportarReservasPDF()">
-          <i class="bi bi-file-earmark-pdf"></i> Exportar a PDF
-        </button>
-      </div>
-    </div>
 
-      <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-          <thead class="table-dark">
-            <tr>
-              <th>Paciente</th>
-              <th>Documento</th>
-              <th>Médico</th>
-              <th>Especialidad</th>
-              <th>Obra Social</th>
-              <th>Fecha y Hora</th>
-              <th>Monto</th>
-            </tr>
-          </thead>
-        <tbody id="tablaReservasBody"></tbody>
-      </table>
-      </div>
-     </div>
-      
-    </div>
-    
+      <!-- RESERVAS -->
+      <div class="tab-pane fade" id="reservasTab">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-primary mb-0">Reservas Confirmadas</h4>
+          <div class="d-flex gap-2">
+            <button class="btn btn-info btn-sm" onclick="exportarReservasExcel()">
+              <i class="bi bi-file-earmark-excel"></i> Exportar a Excel
+            </button>
+            <button class="btn btn-warning btn-sm" onclick="exportarReservasPDF()">
+              <i class="bi bi-file-earmark-pdf"></i> Exportar a PDF
+            </button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th>Paciente</th>
+                <th>Documento</th>
+                <th>Médico</th>
+                <th>Especialidad</th>
+                <th>Obra Social</th>
+                <th>Fecha y Hora</th>
+                <th>Monto</th>
+              </tr>
+            </thead>
+            <tbody id="tablaReservasBody"></tbody>
+          </table>
+        </div>
+
+        <!-- CONTROLES DE FILTRO Y ACCIONES -->
+        <div class="container mt-4">
+          <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+              <div class="d-flex justify-content-center align-items-center gap-3 mb-3 flex-wrap">
+                <div>
+                  <label for="fechaDesde" class="form-label mb-0 me-2">Desde:</label>
+                  <input type="date" id="fechaDesde" class="form-control d-inline-block" style="width: auto;">
+                </div>
+                <div>
+                  <label for="fechaHasta" class="form-label mb-0 me-2">Hasta:</label>
+                  <input type="date" id="fechaHasta" class="form-control d-inline-block" style="width: auto;">
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <button class="btn btn-warning dropdown-toggle px-4" type="button" id="accionesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  Acciones
+                </button>
+                <ul class="dropdown-menu text-center" aria-labelledby="accionesDropdown">
+                  <li><button id="btnBorrarViejas" class="dropdown-item text-danger">Borrar reservas viejas</button></li>
+                  <li><button id="btnFiltrar" class="dropdown-item">Filtrar por fecha</button></li>
+                  <li><button id="btnMostrarTodas" class="dropdown-item">Mostrar todas</button></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div> 
   </main>
 
-  <!-- FOOTER INSTITUCIONAL -->
+  <!-- FOOTER -->
   <footer class="pie_de_portada mt-5 px-3 px-md-5">
     <p>&copy; 2025 Vital Consultorios. Todos los derechos reservados.</p>
     <p>Dirección: Alameda de la Federación 520 - Paraná - Entre Ríos - Argentina</p>
@@ -171,82 +184,158 @@
   </footer>
 
   <!-- BOTÓN MODO OSCURO -->
-  <button id="modoOscuroBtn" class="btn btn-secondary position-fixed bottom-0 end-0 m-3" aria-label="Activar o desactivar modo oscuro">Modo oscuro</button>
+  <button id="modoOscuroBtn" class="btn btn-secondary position-fixed bottom-0 end-0 m-3">Modo oscuro</button>
 
   <!-- SCRIPTS -->
-  
   <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   <script src="especialidad.js"></script>
   <script src="obrasSociales.js"></script>
   <script src="medicos.js"></script>
   <script src="generarTurnos.js"></script>
+  <script src="reservasAdmin.js"></script>
   <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-  <script src="reservasAdmin.js"></script>
+  <!-- LÓGICA INSTITUCIONAL -->
   <script>
-  // Verifica si el administrador está logueado
-  const username = sessionStorage.getItem("adminLogueado");
-  const token = sessionStorage.getItem("token");
+    const username = sessionStorage.getItem("adminLogueado");
+    const token = sessionStorage.getItem("token");
+    if (!username || !token) {
+      alert("Acceso denegado. Debes iniciar sesión primero.");
+      window.location.href = "login.html";
+    } else {
+      const bienvenida = document.createElement("p");
+      bienvenida.textContent = `Bienvenido, ${username}`;
+      document.querySelector(".portada").appendChild(bienvenida);
+    }
 
-  if (!username || !token) {
-    alert("Acceso denegado. Debes iniciar sesión primero.");
-    window.location.href = "login.html";
-  } else {
-    // Mostrar mensaje de bienvenida
-    const bienvenida = document.createElement("p");
-    bienvenida.textContent = `Bienvenido, ${username}`;
-    document.querySelector(".portada").appendChild(bienvenida);
-  }
+    function cerrarSesion() {
+      sessionStorage.removeItem("adminLogueado");
+      sessionStorage.removeItem("token");
+      window.location.href = "login.html";
+    }
 
-  // Cerrar sesión
-  function cerrarSesion() {
-    sessionStorage.removeItem("adminLogueado");
-    sessionStorage.removeItem("token");
-    window.location.href = "login.html";
-  }
+    document.getElementById("modoOscuroBtn").addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
 
-  
-  // Modo oscuro
-  document.getElementById("modoOscuroBtn").addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");    
-  });
-</script>
+    function renderReservas() {
+      const tablaBody = document.getElementById("tablaReservasBody");
+      const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
+      const medicos = JSON.parse(localStorage.getItem("medicos") || "[]");
 
-<script>
-  function renderReservas() {
-    const tablaBody = document.getElementById("tablaReservasBody");
-    const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
-    const medicos = JSON.parse(localStorage.getItem("medicos") || "[]");
+      if (!tablaBody) return;
+      if (reservas.length === 0) {
+        tablaBody.innerHTML = `<tr><td colspan="7" class="text-center text-muted">No hay reservas confirmadas.</td></tr>`;
+        return;
+      }
 
-    if (!tablaBody) return;
+      tablaBody.innerHTML = reservas.map(r => {
+        const medico = medicos.find(m => m.id === r.medicoId);
+        return `
+          <tr>
+            <td>${r.nombre}</td>
+            <td>${r.documento}</td>
+            <td>${medico ? medico.nombre + " " + medico.apellido : "Desconocido"}</td>
+            <td>${r.especialidad}</td>
+            <td>${r.obraSocial}</td>
+            <td>${new Date(r.fechaHora).toLocaleString()}</td>
+            <td>$${r.monto.toFixed(2)}</td>
+          </tr>
+        `;
+      }).join("");
+    }
 
-    if (reservas.length === 0) {
-      tablaBody.innerHTML = `<tr><td colspan="7" class="text-center text-muted">No hay reservas confirmadas.</td></tr>`;
+    function renderReservasFiltradas(lista) {
+      const tablaBody = document.getElementById("tablaReservasBody");
+      const medicos = JSON.parse(localStorage.getItem("medicos") || "[]");
+
+      if (!tablaBody) return;
+      if (lista.length === 0) {
+        tablaBody.innerHTML = `<tr><td colspan="7" class="text-center text-muted">No hay reservas en ese rango.</td></tr>`;
+        return;
+      }
+
+      tablaBody.innerHTML = lista.map(r => {
+        const medico = medicos.find(m => m.id === r.medicoId);
+        return `
+          <tr>
+            <td>${r.nombre}</td>
+            <td>${r.documento}</td>
+            <td>${medico ? medico.nombre + " " + medico.apellido : "Desconocido"}</td>
+            <td>${r.especialidad}</td>
+            <td>${r.obraSocial}</td>
+            <td>${new Date(r.fechaHora).toLocaleString()}</td>
+            <td>$${r.monto.toFixed(2)}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof renderTabla === "function") renderTabla();
+      renderReservas();
+    });
+
+    document.getElementById("btnBorrarViejas").addEventListener("click", () => {
+      const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
+      const hoy = new Date();
+      const nuevasReservas = reservas.filter(r => new Date(r.fechaHora) >= hoy);
+      localStorage.setItem("reservas", JSON.stringify(nuevasReservas));
+      alert("Reservas anteriores a hoy fueron eliminadas.");
+      renderReservas();
+    });
+
+    document.getElementById("btnFiltrar").addEventListener("click", () => {
+      const desdeInput = document.getElementById("fechaDesde").value;
+      const hastaInput = document.getElementById("fechaHasta").value;
+
+      if (!desdeInput || !hastaInput) {
+        alert("Seleccioná ambas fechas para aplicar el filtro.");
+        return;
+      }
+
+      const desde = new Date(desdeInput);
+      const hasta = new Date(hastaInput);
+      const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
+
+      const filtradas = reservas.filter(r => {
+        const fecha = new Date(r.fechaHora);
+        return fecha >= desde && fecha <= hasta;
+      });
+
+      renderReservasFiltradas(filtradas);
+    });
+
+    document.getElementById("btnMostrarTodas").addEventListener("click", () => {
+      renderReservas();
+    });
+  </script>
+  <script>
+  document.getElementById("btnBorrarViejas").addEventListener("click", () => {
+    const desdeInput = document.getElementById("fechaDesde").value;
+    const hastaInput = document.getElementById("fechaHasta").value;
+
+    if (!desdeInput || !hastaInput) {
+      alert("Seleccioná ambas fechas para borrar reservas en ese rango.");
       return;
     }
 
-    tablaBody.innerHTML = reservas.map(r => {
-      const medico = medicos.find(m => m.id === r.medicoId);
-      return `
-        <tr>
-          <td>${r.nombre}</td>
-          <td>${r.documento}</td>
-          <td>${medico ? medico.nombre + " " + medico.apellido : "Desconocido"}</td>
-          <td>${r.especialidad}</td>
-          <td>${r.obraSocial}</td>
-          <td>${new Date(r.fechaHora).toLocaleString()}</td>
-          <td>$${r.monto.toFixed(2)}</td>
-        </tr>
-      `;
-    }).join("");
-  }
+    const desde = new Date(desdeInput);
+    const hasta = new Date(hastaInput);
+    let reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
 
-  document.addEventListener("DOMContentLoaded", () => {
-    renderTabla(); 
-    renderReservas(); 
+    const reservasFiltradas = reservas.filter(r => {
+      const fechaReserva = new Date(r.fechaHora);
+      return fechaReserva < desde || fechaReserva > hasta;
+    });
+
+    localStorage.setItem("reservas", JSON.stringify(reservasFiltradas));
+    alert("Reservas dentro del rango seleccionado fueron eliminadas.");
+    renderReservas();
   });
 </script>
 
 </body>
 </html>
+
