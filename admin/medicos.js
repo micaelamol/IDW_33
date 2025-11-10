@@ -52,12 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
                   m.foto
                 }'  style="width: 30px; height: 30px;"></td>
                 <td>
-                  <button class="btn btn-warning btn-sm me-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar" onclick="editarMedico(${
+                  <button class="btn btn-warning btn-sm me-1" onclick="editarMedico(${
                     m.id
-                  })"><i class="bi bi-pencil" ></i></button>
-                  <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar"  onclick="eliminarMedico(${
+                  })">Editar</i></button>
+                  <button class="btn btn-danger btn-sm" onclick="eliminarMedico(${
                     m.id
-                  })"><i class="bi bi-person-x"></i></button>
+                  })">Eliminar</button>
                 </td>
               </tr>
             `
@@ -67,12 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </table>
       </div>
     `;
-    const tooltipTriggerList = document.querySelectorAll(
-      '[data-bs-toggle="tooltip"]'
-    );
-    const tooltipList = [...tooltipTriggerList].map(
-      (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
-    );
+    
   }
 
   window.agregarMedico = function () {
@@ -341,11 +336,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("formMedicoCard").remove();
       });
 
-    /* const cambiarFoto = document.getElementById("cambiarFoto");
-    cambiarFoto.addEventListener("change", () => {
-      fotoABase64(cambiarFoto);
-
-    }); */
+    
   };
 
   window.eliminarMedico = function (id) {
