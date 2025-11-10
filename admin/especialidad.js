@@ -29,8 +29,8 @@ function mostrarEspecialidades() {
             <td>${e.id}</td>
             <td>${e.nombre}</td>
             <td>
-              <button class="btn btn-warning btn-sm editarEspecialidadBtn mx-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Editar" data-id="${e.id}"><i class="bi bi-pencil" ></i></button>
-              <button class="btn btn-danger btn-sm eliminarEspecialidadBtn mx-5" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar" data-id="${e.id}"><i class="bi bi-person-x"></i></button>
+              <button class="btn btn-warning btn-sm editarEspecialidadBtn" data-id="${e.id}">Editar</i></button>
+              <button class="btn btn-danger btn-sm eliminarEspecialidadBtn"  data-id="${e.id}">Eliminar</i></button>
             </td>
           </tr>
         `
@@ -39,12 +39,7 @@ function mostrarEspecialidades() {
       </tbody>
     </table>
   `;
-  const tooltipTriggerList = document.querySelectorAll(
-    '[data-bs-toggle="tooltip"]'
-  );
-  const tooltipList = [...tooltipTriggerList].map(
-    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
-  );
+  
   document
     .getElementById("nuevaEspecialidadBtn")
     .addEventListener("click", () => mostrarFormularioEspecialidad());

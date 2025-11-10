@@ -131,12 +131,12 @@ function mostrarObras() {
               <td>${o.descripcion}</td>
               <td>${o.porcentaje ?? 0}%</td>
               <td>
-                <button class="btn btn-warning btn-sm me-1 editarObraBtn mx-4" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Editar" data-id="${
+                <button class="btn btn-warning btn-sm me-1 editarObraBtn "  data-id="${
                   o.id
-                }"><i class="bi bi-pencil" ></i></button>
-                <button class="btn btn-danger btn-sm eliminarObraBtn mx-4" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Eliminar" data-id="${
+                }">Editar</button>
+                <button class="btn btn-danger btn-sm eliminarObraBtn "  data-id="${
                   o.id
-                }"><i class="bi bi-person-x"></i></button>
+                }">Eliminar</i></button>
               </td>
             </tr>
           `
@@ -146,12 +146,7 @@ function mostrarObras() {
       </table>
     </div>
   `;
-  const tooltipTriggerList = document.querySelectorAll(
-    '[data-bs-toggle="tooltip"]'
-  );
-  const tooltipList = [...tooltipTriggerList].map(
-    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
-  );
+  
   document
     .getElementById("nuevaObraBtn")
     .addEventListener("click", () => mostrarFormularioObra());
