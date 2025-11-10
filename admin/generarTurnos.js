@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tablaBody.innerHTML = Object.entries(agrupados)
       .map(([fecha, lista]) => {
-        const fechaLegible = new Date(fecha + "T00:00:00").toLocaleDateString("es-AR", {
+        const fechaLegible = new Date(fecha + "T03:00:00").toLocaleDateString("es-AR", {
           weekday: "long",
           year: "numeric",
           month: "long",
