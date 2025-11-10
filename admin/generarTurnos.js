@@ -6,29 +6,38 @@ function generarAgendaTurnos(medicos) {
   }
 
   const turnos = [];
-  const fechaInicio = new Date("2025-11-7");
+  /* const fechaInicio = new Date("2025-11-7"); */
+  const fechaInicio = new Date();
+  console.log("fechainicio ", fechaInicio);
+
   const dias = 5;
   const feriados = ["2025-11-12", "2025-12-08"];
   let idTurno = 1;
 
   for (let d = 0; d < dias; d++) {
-  const fechaActual = new Date(fechaInicio.getTime());
-  fechaActual.setDate(fechaActual.getDate() + d);
+    const fechaActual = new Date(fechaInicio.getTime());
+    fechaActual.setDate(fechaInicio.getDate() + d);
 
     const fechaISO = fechaActual.toISOString().slice(0, 10);
+    
+    console.log("fechaISO ", fechaISO);
     const diaSemana = fechaActual.getDay();
+    console.log(diaSemana);
+    console.log(`Día ${d}: ${fechaISO} - Día semana: ${diaSemana}`);
     if ([0, 6].includes(diaSemana) || feriados.includes(fechaISO)) continue;
+    console.log("despues del if ", diaSemana);
+    console.log(`🚫 Saltando: ${fechaISO} - Fin de semana o feriado`);
 
-    medicos.forEach(medico => {
+    medicos.forEach((medico) => {
       for (let i = 0; i < 4; i++) {
-        const turnoFecha = new Date(fechaActual);
+        const turnoFecha = new Date(fechaActual + 3 * 60 * 60 * 1000);
         turnoFecha.setHours(9 + i, 0, 0, 0); // 9:00, 10:00, 11:00, 12:00
-
+        console.log(turnoFecha);
         turnos.push({
           id: idTurno++,
           medico: medico.id,
           fechaHora: turnoFecha.toISOString(),
-          disponible: true
+          disponible: true,
         });
       }
     });
@@ -68,65 +77,91 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const agrupados = {};
-    window.turnos.forEach(t => {
+    window.turnos.forEach((t) => {
       const fecha = t.fechaHora.slice(0, 10);
       if (!agrupados[fecha]) agrupados[fecha] = [];
       agrupados[fecha].push(t);
     });
 
-    tablaBody.innerHTML = Object.entries(agrupados).map(([fecha, lista]) => {
-      const fechaLegible = new Date(fecha).toLocaleDateString("es-AR", {
-        weekday: "long", year: "numeric", month: "long", day: "numeric"
-      });
+    tablaBody.innerHTML = Object.entries(agrupados)
+      .map(([fecha, lista]) => {
+        const fechaLegible = new Date(fecha + 'T00:00:00-03:00').toLocaleDateString("es-AR", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
 
-      const filas = lista.map(t => {
-        const medico = window.medicos.find(m => m.id === t.medico);
-        return `
+        const filas = lista
+          .map((t) => {
+            const medico = window.medicos.find((m) => m.id === t.medico);
+            return `
           <tr>
             <td>${t.id}</td>
-            <td>${medico ? medico.nombre + " " + medico.apellido : "Desconocido"}</td>
-            <td>${new Date(t.fechaHora).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
-            <td class="${t.disponible ? 'text-success fw-semibold' : 'text-danger fw-semibold'}">
+            <td>${
+              medico ? medico.nombre + " " + medico.apellido : "Desconocido"
+            }</td>
+            <td>${new Date(t.fechaHora).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}</td>
+            <td class="${
+              t.disponible
+                ? "text-success fw-semibold"
+                : "text-danger fw-semibold"
+            }">
               ${t.disponible ? "SI" : "Reservado"}
             </td>
             <td>
-              <button class="btn btn-sm btn-danger" onclick="eliminarTurno(${t.id})">Eliminar</button>
+              <button class="btn btn-sm btn-danger" onclick="eliminarTurno(${
+                t.id
+              })">Eliminar</button>
             </td>
           </tr>
         `;
-      }).join("");
+          })
+          .join("");
 
-      return `<tr><td colspan="5" class="table-secondary fw-bold">${fechaLegible}</td></tr>${filas}`;
-    }).join("");
+        return `<tr><td colspan="5" class="table-secondary fw-bold">${fechaLegible}</td></tr>${filas}`;
+      })
+      .join("");
   }
 
- window.eliminarTurno = function(id) {
-  const index = window.turnos.findIndex(t => t.id === id);
-  if (index !== -1) {
-    const turnoEliminado = window.turnos[index];
-    window.turnos.splice(index, 1);
-    localStorage.setItem("turnos", JSON.stringify(window.turnos));
+  window.eliminarTurno = function (id) {
+    const index = window.turnos.findIndex((t) => t.id === id);
+    if (index !== -1) {
+      const turnoEliminado = window.turnos[index];
+      window.turnos.splice(index, 1);
+      localStorage.setItem("turnos", JSON.stringify(window.turnos));
 
-    // Eliminar reservas asociadas al turno
-    let reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
-    const fechaTurno = turnoEliminado.fechaHora;
-    const medicoId = turnoEliminado.medico;
+      // Eliminar reservas asociadas al turno
+      let reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
+      const fechaTurno = turnoEliminado.fechaHora;
+      const medicoId = turnoEliminado.medico;
 
-    reservas = reservas.filter(r => !(r.fechaHora === fechaTurno && r.medicoId === medicoId));
-    localStorage.setItem("reservas", JSON.stringify(reservas));
+      reservas = reservas.filter(
+        (r) => !(r.fechaHora === fechaTurno && r.medicoId === medicoId)
+      );
+      localStorage.setItem("reservas", JSON.stringify(reservas));
 
-    renderTabla();
-    mostrarReservas(); 
-  }
-};
+      renderTabla();
+      mostrarReservas();
+    }
+  };
   window.renderTabla = renderTabla;
   renderTabla();
 });
 
-window.borrarTodosLosTurnos = function() {
+window.borrarTodosLosTurnos = function () {
   if (confirm("¿Estás segura de que querés borrar todos los turnos?")) {
+    console.log("🔍 ANTES de borrar:", localStorage.getItem("turnos"));
+
     localStorage.removeItem("turnos");
+    console.log("🔍 DESPUÉS de borrar:", localStorage.getItem("turnos"));
+    console.log("🔍 window.turnos:", window.turnos);
+
     window.turnos = [];
+    console.log("🔍 window.turnos:", window.turnos);
     renderTabla();
     const mensaje = document.getElementById("mensajeTurnos");
     if (mensaje) {
