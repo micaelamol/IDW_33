@@ -340,23 +340,6 @@
     <!-- LÓGICA INSTITUCIONAL -->
     <script type="module">
       import { startSession } from "./startSession.js";
-      const username = sessionStorage.getItem("adminLogueado");
-      const token = sessionStorage.getItem("token");
-      if (!username || !token) {
-        alert("Acceso denegado. Debes iniciar sesión primero.");
-        window.location.href = "login.html";
-      } else {
-        startSession(token, username).then((data) => {
-          if (data) {
-            const bienvenida = document.createElement("p");
-            bienvenida.textContent = `Bienvenido, ${username}`;
-            document.querySelector(".portada").appendChild(bienvenida);
-          } else {
-            alert("Acceso denegado. Debes iniciar sesión primero.");
-            window.location.href = "login.html";
-          }
-        });
-      }
 
       function cerrarSesion() {
         sessionStorage.removeItem("adminLogueado");
@@ -430,6 +413,24 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
+        const username = sessionStorage.getItem("adminLogueado");
+        const token = sessionStorage.getItem("token");
+
+        if (!username || !token) {
+          alert("Acceso denegado. Debes iniciar sesión primero.");
+          window.location.href = "login.html";
+        } else {
+          startSession(token, username).then((data) => {
+            if (data) {
+              const bienvenida = document.createElement("p");
+              bienvenida.textContent = `Bienvenido, ${username}`;
+              document.querySelector(".portada").appendChild(bienvenida);
+            } else {
+              alert("Acceso denegado. Debes iniciar sesión primero.");
+              window.location.href = "login.html";
+            }
+          });
+        }
         if (typeof renderTabla === "function") renderTabla();
         renderReservas();
       });
