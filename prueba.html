@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-primary">Listado de Médicos</h4>
+        <button class="btn btn-success" onclick="agregarMedico()"> Agregar Médico</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th><th>Nombre</th><th>Apellido</th><th>Matrícula</th><th>Especialidad</th><th>Obras Sociales</th><th>Valor Consulta</th><th>Foto</th><th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>1</td>
+                <td>laura</td>
+                <td>bou</td>
+                <td>586</td>
+                <td>cardio</td>
+                <td>osde</td>
+                <td>$10000</td>
+                <td><img src='imagenes/Contador Jorge Lopez-r.jpg' style="width: 30px; height: 30px;"></td>
+                <td>
+                  <button class="btn btn-warning btn-sm me-1" onclick="editarMedico()">Editar</button>
+                  <button class="btn btn-danger btn-sm tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom" onclick="eliminarMedico()">Eliminar</button>
+                </td>
+              </tr>
+            `
+              
+          </tbody>
+        </table>
+      </div>
+
+        <script src="../bootstrap-5.3.8-dist/js/popper.min.js" ></script>
+        <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+</script>
+</body>
+</html>

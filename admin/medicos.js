@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const medicosTab = document.getElementById("medicos");
   let medicosStorage = JSON.parse(localStorage.getItem("medicos") || "[]");
-  let especialidadesStorage = JSON.parse(
+  /* let especialidadesStorage = JSON.parse(
     localStorage.getItem("especialidades") || "[]"
-  );
-  let obrasSocialesStorage = JSON.parse(
+  ); */
+  /* let obrasSocialesStorage = JSON.parse(
     localStorage.getItem("obrasSociales") || "[]"
-  );
+  ); */
 
   function mostrarMedicos() {
     especialidadesStorage = JSON.parse(
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <table class="table table-bordered table-hover align-middle">
           <thead class="table-dark">
             <tr>
-              <th>ID</th><th>Nombre</th><th>Apellido</th><th>Matrícula</th><th>Especialidad</th><th>Obras Sociales</th><th>Valor Consulta</th><th>Acciones</th>
+              <th>ID</th><th>Nombre</th><th>Apellido</th><th>Matrícula</th><th>Especialidad</th><th>Obras Sociales</th><th>Valor Consulta</th><th>Foto</th><th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -48,10 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
                   )
                   .join(", ")}</td>
                 <td>$${m.valorConsulta}</td>
+                <td><img src='${
+                  m.foto
+                }'  style="width: 30px; height: 30px;"></td>
                 <td>
                   <button class="btn btn-warning btn-sm me-1" onclick="editarMedico(${
                     m.id
-                  })">Editar</button>
+                  })">Editar</i></button>
                   <button class="btn btn-danger btn-sm" onclick="eliminarMedico(${
                     m.id
                   })">Eliminar</button>
@@ -64,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </table>
       </div>
     `;
+    
   }
 
   window.agregarMedico = function () {
@@ -71,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     especialidadesStorage = JSON.parse(
       localStorage.getItem("especialidades") || "[]"
     );
-    
+
     obrasSocialesStorage = JSON.parse(
       localStorage.getItem("obrasSociales") || "[]"
     );
@@ -130,6 +134,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     medicosTab.insertAdjacentHTML("afterbegin", formHtml);
 
+    const fotoInput = document.getElementById("nuevoFoto");
+    /* fotoABase64 llama a una funcion que pasa la foto del input a base64, y lo almacena en una variable localstorage */
+    fotoABase64(fotoInput);
+
     document
       .getElementById("cancelarMedicoBtn")
       .addEventListener("click", () => {
@@ -172,10 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ? Math.max(...medicosStorage.map((m) => parseInt(m.id) || 0)) + 1
             : 1;
 
-        const fotoInput = document.getElementById("nuevoFoto");
-        const fotoFile = fotoInput?.files[0];
-        const fotoNombre = fotoFile ? fotoFile.name : null;
-
         const nuevoMedico = {
           id: nuevoId,
           nombre,
@@ -184,9 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
           especialidad,
           obrasSociales: obrasSeleccionadas,
           valorConsulta,
-          foto: fotoNombre
+          foto: localStorage.getItem("base64"),
         };
-
+        localStorage.removeItem("base64");
         medicosStorage.push(nuevoMedico);
         localStorage.setItem("medicos", JSON.stringify(medicosStorage));
         document.getElementById("formMedicoCard").remove();
@@ -196,30 +200,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.editarMedico = function (id) {
     const medico = medicosStorage.find((m) => m.id === id);
+    console.log("medico: ", medico);
     if (!medico) return;
 
     const formHtml = `
       <div class="card shadow-sm p-4 mb-4 bg-light" id="formMedicoCard">
         <h5 class="mb-3 text-warning">Editar Médico</h5>
         <div class="row g-3">
+
           <div class="col-md-6">
             <label class="form-label" for='nuevoNombre'>Nombre:</label>
             <input type="text" id="nuevoNombre" class="form-control" value="${
               medico.nombre
             }">
           </div>
+
           <div class="col-md-6">
             <label class="form-label" for='nuevoApellido'>Apellido:</label>
             <input type="text" id="nuevoApellido" class="form-control" value="${
               medico.apellido
             }">
           </div>
+
           <div class="col-md-6">
               <label class="form-label" for='nuevoMatricula'>Matrícula profesional:</label>
               <input type="number" id="nuevoMatricula" class="form-control" value="${
                 medico.matricula
               }">
           </div>
+
           <div class="col-md-6">
             <label class="form-label" for='nuevoEspecialidad'>Especialidad:</label>
             <select id="nuevoEspecialidad" class="form-select">
@@ -233,6 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .join("")}
             </select>
           </div>
+
           <div class="col-md-6">
             <label class="form-label" for='nuevoObrasSociales'>Obras Sociales:</label>
             <select id="nuevoObrasSociales" class="form-select" multiple>
@@ -247,13 +257,21 @@ document.addEventListener("DOMContentLoaded", () => {
             </select>
             <div class="form-text">Usá Ctrl (o Cmd) para seleccionar varias.</div>
           </div>
+
           <div class="col-md-6">
             <label class="form-label" for='nuevoValor'>Valor de consulta:</label>
             <input type="number" id="nuevoValor" class="form-control" value="${
               medico.valorConsulta
             }">
           </div>
+          
+          <div class="col-md-6">
+              <label class="form-label" for="cambiarFoto">Foto del médico:</label>
+              <input type="file" id="cambiarFoto" class="form-control" accept="image/*">
+            </div>
         </div>
+
+
         <div class="mt-4">
           <button class="btn btn-warning me-2" id="guardarEdicionBtn">Guardar Cambios</button>
           <button class="btn btn-secondary" id="cancelarMedicoBtn">Cancelar</button>
@@ -264,6 +282,10 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     medicosTab.insertAdjacentHTML("afterbegin", formHtml);
+
+    const fotoInput = document.getElementById("cambiarFoto");
+    /* fotoABase64 llama a una funcion que pasa la foto del input a base64, y lo almacena en una variable localstorage */
+    fotoABase64(fotoInput);
 
     document
       .getElementById("cancelarMedicoBtn")
@@ -307,11 +329,14 @@ document.addEventListener("DOMContentLoaded", () => {
         medico.especialidad = especialidad;
         medico.obrasSociales = obrasSeleccionadas;
         medico.valorConsulta = valorConsulta;
-
+        medico.foto = localStorage.getItem("base64");
+        localStorage.removeItem("base64");
         localStorage.setItem("medicos", JSON.stringify(medicosStorage));
         mostrarMedicos();
         document.getElementById("formMedicoCard").remove();
       });
+
+    
   };
 
   window.eliminarMedico = function (id) {
@@ -324,3 +349,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   mostrarMedicos();
 });
+
+function fotoABase64(foto) {
+  foto.addEventListener("change", function (event) {
+    const read = new FileReader();
+    read.onloadend = () => {
+      console.log(read.result);
+      localStorage.setItem("base64", read.result);
+    };
+
+    read.readAsDataURL(event.target.files[0]);
+  });
+}
