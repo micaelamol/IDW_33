@@ -11,7 +11,7 @@ function generarAgendaTurnos(medicos) {
   }
 
   const turnos = [];
-  const fechaInicio = new Date("2025-11-10");
+  const fechaInicio = new Date();
   const dias = 5;
   const feriados = ["2025-11-12", "2025-12-08"];
   let idTurno = 1;
