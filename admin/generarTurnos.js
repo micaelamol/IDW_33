@@ -143,14 +143,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.borrarTodosLosTurnos = function () {
-  if (confirm("¿Estás segura de que querés borrar todos los turnos?")) {
+  if (confirm("¿Estás segura de que querés borrar todos los turnos y sus reservas asociadas?")) {
+    // Borrar turnos
     localStorage.removeItem("turnos");
     window.turnos = [];
+
+    // Borrar reservas
+    localStorage.removeItem("reservas");
+
+    // Actualizar interfaz
     if (typeof renderTabla === "function") renderTabla();
+    if (typeof mostrarReservas === "function") mostrarReservas();
 
     const mensaje = document.getElementById("mensajeTurnos");
     if (mensaje) {
-      mensaje.innerHTML = `<div class="alert alert-warning">Se borraron todos los turnos.</div>`;
+      mensaje.innerHTML = `<div class="alert alert-warning">Se borraron todos los turnos y reservas asociadas.`;
     }
   }
 };

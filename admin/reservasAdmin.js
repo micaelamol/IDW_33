@@ -3,7 +3,25 @@ if (typeof Storage === "undefined") {
   throw new Error("Storage no disponible");
 }
 
-// Función para exportar las reservas a PDF
+// 🧹 Eliminar reservas sin turno asociado
+function limpiarReservasSinTurno() {
+  const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
+  const turnos = JSON.parse(localStorage.getItem("turnos") || "[]");
+
+  const reservasFiltradas = reservas.filter((r) =>
+    turnos.some((t) => t.fechaHora === r.fechaHora && t.medico === r.medicoId)
+  );
+
+  const eliminadas = reservas.length - reservasFiltradas.length;
+  localStorage.setItem("reservas", JSON.stringify(reservasFiltradas));
+  mostrarReservas(reservasFiltradas);
+
+  if (eliminadas > 0) {
+    alert(`Se eliminaron ${eliminadas} reservas sin turno asociado.`);
+  }
+}
+
+// 📄 Exportar reservas a PDF
 function exportarReservasPDF() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
   const medicos = JSON.parse(localStorage.getItem("medicos") || "[]");
@@ -32,7 +50,6 @@ function exportarReservasPDF() {
     doc.text(`Monto: $${r.monto.toFixed(2)}`, 14, y + 36);
     y += 48;
 
-    // Agregar nueva página si se llena
     if (y > 270) {
       doc.addPage();
       y = 20;
@@ -42,25 +59,28 @@ function exportarReservasPDF() {
   doc.save("reservas_vital_consultorios.pdf");
 }
 
-// Función para exportar las reservas a Excel
+// 📊 Exportar reservas a Excel
 function exportarReservasExcel() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
-  const medico = JSON.parse(localStorage.getItem('medicos')) || [];
+  const medicos = JSON.parse(localStorage.getItem("medicos") || []);
 
   if (reservas.length === 0) {
     alert("No hay reservas para exportar.");
     return;
   }
 
-  const datos = reservas.map(r => ({
-    Paciente: r.nombre,
-    Documento: r.documento,
-    Médico: medico.find(m=> m.id === r.medicoId).nombre+' '+ medico.find(m=> m.id === r.medicoId).apellido || "Desconocido",
-    Especialidad: r.especialidad,
-    "Obra Social": r.obraSocial,
-    "Fecha y Hora": new Date(r.fechaHora).toLocaleString("es-AR"),
-    Monto: `$${r.monto.toFixed(2)}`
-  }));
+  const datos = reservas.map(r => {
+    const medico = medicos.find(m => m.id === r.medicoId);
+    return {
+      Paciente: r.nombre,
+      Documento: r.documento,
+      Médico: medico ? medico.nombre + " " + medico.apellido : (r.medicoNombre || "Desconocido"),
+      Especialidad: r.especialidad,
+      "Obra Social": r.obraSocial,
+      "Fecha y Hora": new Date(r.fechaHora).toLocaleString("es-AR"),
+      Monto: `$${r.monto.toFixed(2)}`
+    };
+  });
 
   const ws = XLSX.utils.json_to_sheet(datos);
   const wb = XLSX.utils.book_new();
@@ -68,14 +88,14 @@ function exportarReservasExcel() {
   XLSX.writeFile(wb, "reservas_vital_consultorios.xlsx");
 }
 
-// Eliminar reservas viejas (anteriores a la fecha actual)
+// 🗑️ Eliminar reservas viejas
 function borrarReservasViejas() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
   const hoy = new Date();
 
   const reservasActualizadas = reservas.filter(r => new Date(r.fechaHora) >= hoy);
-
   const eliminadas = reservas.length - reservasActualizadas.length;
+
   if (eliminadas > 0) {
     localStorage.setItem("reservas", JSON.stringify(reservasActualizadas));
     alert(`Se eliminaron ${eliminadas} reservas viejas.`);
@@ -85,7 +105,7 @@ function borrarReservasViejas() {
   }
 }
 
-
+// 📅 Filtrar reservas por fecha
 function filtrarReservasPorFecha(fechaInicio, fechaFin) {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
 
@@ -94,18 +114,15 @@ function filtrarReservasPorFecha(fechaInicio, fechaFin) {
     return;
   }
 
-  // Convertir fechas del input a objetos Date
   const inicio = new Date(fechaInicio);
   const fin = new Date(fechaFin);
-  fin.setHours(23, 59, 59, 999); 
+  fin.setHours(23, 59, 59, 999);
 
-  // Filtrar reservas dentro del rango
   const filtradas = reservas.filter(r => {
     const fechaReserva = new Date(r.fechaHora);
     return fechaReserva >= inicio && fechaReserva <= fin;
   });
 
-  // Mostrar resultado
   if (filtradas.length === 0) {
     alert("No hay reservas en el rango seleccionado.");
   }
@@ -113,8 +130,7 @@ function filtrarReservasPorFecha(fechaInicio, fechaFin) {
   mostrarReservas(filtradas);
 }
 
-
-//  Mostrar reservas en tabla
+// 🧾 Mostrar reservas en tabla
 function mostrarReservas(reservas = null) {
   const tabla = document.getElementById("tablaReservasBody");
   const lista = reservas || JSON.parse(localStorage.getItem("reservas") || "[]");
@@ -136,7 +152,7 @@ function mostrarReservas(reservas = null) {
   });
 }
 
-// Asignar eventos a botones
+// 🚀 Inicialización y eventos
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("exportarPDFBtn")?.addEventListener("click", exportarReservasPDF);
   document.getElementById("exportarExcelBtn")?.addEventListener("click", exportarReservasExcel);
@@ -147,5 +163,31 @@ document.addEventListener("DOMContentLoaded", () => {
     filtrarReservasPorFecha(fechaInicio, fechaFin);
   });
 
+  // Limpieza automática de reservas sin turno
+  limpiarReservasSinTurno();
+});
+//  Asignar eventos a botones y limpiar reservas huérfanas al iniciar
+document.addEventListener("DOMContentLoaded", () => {
+  // Botones de exportación
+  document.getElementById("exportarPDFBtn")?.addEventListener("click", exportarReservasPDF);
+  document.getElementById("exportarExcelBtn")?.addEventListener("click", exportarReservasExcel);
+
+  // Botón para borrar reservas viejas
+  document.getElementById("borrarViejasBtn")?.addEventListener("click", borrarReservasViejas);
+
+  // Botón para filtrar por fecha
+  document.getElementById("filtrarBtn")?.addEventListener("click", () => {
+    const fechaInicio = document.getElementById("fechaInicio").value;
+    const fechaFin = document.getElementById("fechaFin").value;
+    filtrarReservasPorFecha(fechaInicio, fechaFin);
+  });
+
+  // Botón opcional para limpiar reservas sin turno 
+  document.getElementById("limpiarReservasBtn")?.addEventListener("click", limpiarReservasSinTurno);
+
+  //  Limpieza automática de reservas  al iniciar
+  limpiarReservasSinTurno();
+
+  // Mostrar reservas actualizadas
   mostrarReservas();
 });
