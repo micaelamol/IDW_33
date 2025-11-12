@@ -3,7 +3,7 @@ if (typeof Storage === "undefined") {
   throw new Error("Storage no disponible");
 }
 
-// 🧹 Eliminar reservas sin turno asociado
+// Eliminar reservas sin turno asociado
 function limpiarReservasSinTurno() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
   const turnos = JSON.parse(localStorage.getItem("turnos") || "[]");
@@ -21,7 +21,7 @@ function limpiarReservasSinTurno() {
   }
 }
 
-// 📄 Exportar reservas a PDF
+//  Exportar reservas a PDF
 function exportarReservasPDF() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
   const medicos = JSON.parse(localStorage.getItem("medicos") || "[]");
@@ -59,7 +59,7 @@ function exportarReservasPDF() {
   doc.save("reservas_vital_consultorios.pdf");
 }
 
-// 📊 Exportar reservas a Excel
+//  Exportar reservas a Excel
 function exportarReservasExcel() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
   const medicos = JSON.parse(localStorage.getItem("medicos") || []);
@@ -88,7 +88,7 @@ function exportarReservasExcel() {
   XLSX.writeFile(wb, "reservas_vital_consultorios.xlsx");
 }
 
-// 🗑️ Eliminar reservas viejas
+// Eliminar reservas viejas
 function borrarReservasViejas() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
   const hoy = new Date();
@@ -105,7 +105,7 @@ function borrarReservasViejas() {
   }
 }
 
-// 📅 Filtrar reservas por fecha
+// Filtrar reservas por fecha
 function filtrarReservasPorFecha(fechaInicio, fechaFin) {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
 
@@ -130,7 +130,7 @@ function filtrarReservasPorFecha(fechaInicio, fechaFin) {
   mostrarReservas(filtradas);
 }
 
-// 🧾 Mostrar reservas en tabla
+// Mostrar reservas en tabla
 function mostrarReservas(reservas = null) {
   const tabla = document.getElementById("tablaReservasBody");
   const lista = reservas || JSON.parse(localStorage.getItem("reservas") || "[]");
@@ -152,7 +152,7 @@ function mostrarReservas(reservas = null) {
   });
 }
 
-// 🚀 Inicialización y eventos
+// Inicialización y eventos
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("exportarPDFBtn")?.addEventListener("click", exportarReservasPDF);
   document.getElementById("exportarExcelBtn")?.addEventListener("click", exportarReservasExcel);
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Limpieza automática de reservas sin turno
   limpiarReservasSinTurno();
 });
-//  Asignar eventos a botones y limpiar reservas huérfanas al iniciar
+//  Asignar eventos a botones y limpiar reservas al iniciar
 document.addEventListener("DOMContentLoaded", () => {
   // Botones de exportación
   document.getElementById("exportarPDFBtn")?.addEventListener("click", exportarReservasPDF);
