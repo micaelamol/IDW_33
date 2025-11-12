@@ -3,7 +3,7 @@ if (typeof Storage === "undefined") {
   throw new Error("Storage no disponible");
 }
 
-// Eliminar reservas sin turno asociado
+//  Eliminar reservas sin turno asociado
 function limpiarReservasSinTurno() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
   const turnos = JSON.parse(localStorage.getItem("turnos") || "[]");
@@ -40,10 +40,12 @@ function exportarReservasPDF() {
   let y = 40;
   reservas.forEach((r) => {
     const medico = medicos.find(m => m.id === r.medicoId);
+    const nombreMedico = medico ? `${medico.nombre} ${medico.apellido}` : (r.medicoNombre || "Desconocido");
+
     doc.setFontSize(10);
     doc.text(`Paciente: ${r.nombre}`, 14, y);
     doc.text(`Documento: ${r.documento}`, 14, y + 6);
-    doc.text(`Médico: ${medico ? medico.nombre + " " + medico.apellido : (r.medicoNombre || "Desconocido")}`, 14, y + 12);
+    doc.text(`Médico: ${nombreMedico}`, 14, y + 12);
     doc.text(`Especialidad: ${r.especialidad}`, 14, y + 18);
     doc.text(`Obra Social: ${r.obraSocial}`, 14, y + 24);
     doc.text(`Fecha y Hora: ${new Date(r.fechaHora).toLocaleString("es-AR")}`, 14, y + 30);
@@ -59,7 +61,7 @@ function exportarReservasPDF() {
   doc.save("reservas_vital_consultorios.pdf");
 }
 
-//  Exportar reservas a Excel
+// Exportar reservas a Excel
 function exportarReservasExcel() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
   const medicos = JSON.parse(localStorage.getItem("medicos") || []);
@@ -71,10 +73,12 @@ function exportarReservasExcel() {
 
   const datos = reservas.map(r => {
     const medico = medicos.find(m => m.id === r.medicoId);
+    const nombreMedico = medico ? `${medico.nombre} ${medico.apellido}` : (r.medicoNombre || "Desconocido");
+
     return {
       Paciente: r.nombre,
       Documento: r.documento,
-      Médico: medico ? medico.nombre + " " + medico.apellido : (r.medicoNombre || "Desconocido"),
+      Médico: nombreMedico,
       Especialidad: r.especialidad,
       "Obra Social": r.obraSocial,
       "Fecha y Hora": new Date(r.fechaHora).toLocaleString("es-AR"),
@@ -88,7 +92,7 @@ function exportarReservasExcel() {
   XLSX.writeFile(wb, "reservas_vital_consultorios.xlsx");
 }
 
-// Eliminar reservas viejas
+//  Eliminar reservas viejas
 function borrarReservasViejas() {
   const reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
   const hoy = new Date();
@@ -130,18 +134,22 @@ function filtrarReservasPorFecha(fechaInicio, fechaFin) {
   mostrarReservas(filtradas);
 }
 
-// Mostrar reservas en tabla
+//  Mostrar reservas en tabla (corregido)
 function mostrarReservas(reservas = null) {
   const tabla = document.getElementById("tablaReservasBody");
   const lista = reservas || JSON.parse(localStorage.getItem("reservas") || "[]");
+  const medicos = JSON.parse(localStorage.getItem("medicos") || "[]");
   tabla.innerHTML = "";
 
   lista.forEach((r) => {
+    const medico = medicos.find(m => m.id === r.medicoId);
+    const nombreMedico = medico ? `${medico.nombre} ${medico.apellido}` : (r.medicoNombre || "Desconocido");
+
     const fila = `
       <tr>
         <td>${r.nombre}</td>
         <td>${r.documento}</td>
-        <td>${r.medicoNombre || "Desconocido"}</td>
+        <td>${nombreMedico}</td>
         <td>${r.especialidad}</td>
         <td>${r.obraSocial}</td>
         <td>${new Date(r.fechaHora).toLocaleString("es-AR")}</td>
@@ -163,31 +171,8 @@ document.addEventListener("DOMContentLoaded", () => {
     filtrarReservasPorFecha(fechaInicio, fechaFin);
   });
 
-  // Limpieza automática de reservas sin turno
-  limpiarReservasSinTurno();
-});
-//  Asignar eventos a botones y limpiar reservas al iniciar
-document.addEventListener("DOMContentLoaded", () => {
-  // Botones de exportación
-  document.getElementById("exportarPDFBtn")?.addEventListener("click", exportarReservasPDF);
-  document.getElementById("exportarExcelBtn")?.addEventListener("click", exportarReservasExcel);
-
-  // Botón para borrar reservas viejas
-  document.getElementById("borrarViejasBtn")?.addEventListener("click", borrarReservasViejas);
-
-  // Botón para filtrar por fecha
-  document.getElementById("filtrarBtn")?.addEventListener("click", () => {
-    const fechaInicio = document.getElementById("fechaInicio").value;
-    const fechaFin = document.getElementById("fechaFin").value;
-    filtrarReservasPorFecha(fechaInicio, fechaFin);
-  });
-
-  // Botón opcional para limpiar reservas sin turno 
   document.getElementById("limpiarReservasBtn")?.addEventListener("click", limpiarReservasSinTurno);
 
-  //  Limpieza automática de reservas  al iniciar
   limpiarReservasSinTurno();
-
-  // Mostrar reservas actualizadas
   mostrarReservas();
 });
