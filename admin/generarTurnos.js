@@ -1,7 +1,8 @@
-function generarAgendaTurnos(medicos) {
+function generarAgendaTurnos(medicos, nuevo) {
   const turnosExistentes = JSON.parse(localStorage.getItem("turnos") || "[]");
 
-  if (turnosExistentes.length > 0) {
+  
+  if (turnosExistentes.length > 0 && nuevo == "") {
     console.warn("Ya existen turnos en el sistema. No se generaron nuevos.");
     const mensaje = document.getElementById("mensajeTurnos");
     if (mensaje) {
@@ -16,6 +17,14 @@ function generarAgendaTurnos(medicos) {
   const feriados = ["2025-11-12", "2025-12-08"];
   let idTurno = 1;
 
+  /* console.log(medicos);
+      console.log(typeof(medicos));
+      alert('pausa'); */
+  const turnosStorage = JSON.parse(localStorage.getItem("turnos")) || [];
+  let maxId =
+    turnosStorage.length > 0
+      ? Math.max(...turnosStorage.map((t) => parseInt(t.id) + 1 || 0))
+      : 1;
   for (let d = 0; d < dias; d++) {
     const fechaActual = new Date(fechaInicio);
     fechaActual.setDate(fechaInicio.getDate() + d);
@@ -25,24 +34,53 @@ function generarAgendaTurnos(medicos) {
 
     // Evitar sábados, domingos y feriados
     if ([0, 6].includes(diaSemana) || feriados.includes(fechaISO)) continue;
+    if (nuevo == "nuevo") {
+      [medicos].forEach((medico) => {
+        for (let i = 0; i < 4; i++) {
+          const hora = 9 + i;
+          const fechaHoraLocal = `${fechaISO}T${String(hora).padStart(
+            2,
+            "0"
+          )}:00:00`;
+          /* console.log(maxId); */
+          turnos.push({
+            id: maxId++,
+            medico: medico.id,
+            fechaHora: fechaHoraLocal,
+            disponible: true,
+          });
+        }
+      });
+    } else {
+      /* console.log(medicos);
+      console.log(typeof medicos);
+      alert("pausa"); */
+      Object.values(medicos).forEach((medico) => {
+        for (let i = 0; i < 4; i++) {
+          const hora = 9 + i;
+          const fechaHoraLocal = `${fechaISO}T${String(hora).padStart(
+            2,
+            "0"
+          )}:00:00`;
 
-    medicos.forEach((medico) => {
-      for (let i = 0; i < 4; i++) {
-        const hora = 9 + i;
-        const fechaHoraLocal = `${fechaISO}T${String(hora).padStart(2, "0")}:00:00`;
-
-        turnos.push({
-          id: idTurno++,
-          medico: medico.id,
-          fechaHora: fechaHoraLocal,
-          disponible: true,
-        });
-      }
-    });
+          turnos.push({
+            id: idTurno++,
+            medico: medico.id,
+            fechaHora: fechaHoraLocal,
+            disponible: true,
+          });
+        }
+      });
+    }
   }
-
-  localStorage.setItem("turnos", JSON.stringify(turnos));
-  window.turnos = turnos;
+  if (localStorage.getItem("turnos") == null) {
+    localStorage.setItem("turnos", JSON.stringify(turnos));
+    window.turnos = turnos;
+  } else {
+    turnosStorage.push(...turnos);
+    localStorage.setItem("turnos", JSON.stringify(turnosStorage));
+    window.turnos = turnosStorage;
+  }
 
   console.log(`Se generaron ${turnos.length} turnos para la semana.`);
 
@@ -52,7 +90,7 @@ function generarAgendaTurnos(medicos) {
   }
 
   if (typeof renderTabla === "function") {
-    renderTabla();
+    renderTabla(nuevo);
   }
 }
 
@@ -62,15 +100,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const tablaBody = document.getElementById("tablaTurnosBody");
   const medicos = JSON.parse(localStorage.getItem("medicos") || "[]");
   const turnosGuardados = JSON.parse(localStorage.getItem("turnos") || "[]");
-
-  window.turnos = turnosGuardados;
-  window.medicos = medicos;
-
+  /* console.dir("turnosGuardados ", turnosGuardados);
+  console.log("typeof(turnosGuardados) ", typeof turnosGuardados);
+  turnosGuardados.map((t) => {
+    console.log(t);
+  });
+  confirm(); */
+  
   if (turnosGuardados.length === 0 && medicos.length > 0) {
     generarAgendaTurnos(medicos);
   }
-
+  
   window.renderTabla = function renderTabla() {
+    const medicos = JSON.parse(localStorage.getItem("medicos") || "[]");
+  const turnosGuardados = JSON.parse(localStorage.getItem("turnos") || "[]");
+    window.turnos = turnosGuardados;
+    window.medicos = medicos;
     if (!tablaBody) return;
 
     if (window.turnos.length === 0) {
@@ -79,20 +124,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const agrupados = {};
-    window.turnos.forEach((t) => {
-      const fecha = t.fechaHora.slice(0, 10);
-      if (!agrupados[fecha]) agrupados[fecha] = [];
-      agrupados[fecha].push(t);
+
+    
+    Object.values(window.turnos).forEach((t) => {
+      /* console.dir(t);
+      console.log("t.fechaHora ", typeof (t.fechaHora));
+       */
+      try {
+        const fecha = t.fechaHora.slice(0, 10);
+        if (!agrupados[fecha]) agrupados[fecha] = [];
+        agrupados[fecha].push(t);
+      } catch (error) {
+        console.log(
+          "error en linea 122 const fecha = t.fechaHora.slice(0, 10); ",
+          error
+        );
+      }
+      /* const fecha = t.fechaHora.slice(0, 10) || console.log('error ',t); */
     });
 
     tablaBody.innerHTML = Object.entries(agrupados)
       .map(([fecha, lista]) => {
-        const fechaLegible = new Date(fecha + "T00:00:00").toLocaleDateString("es-AR", {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
+        const fechaLegible = new Date(fecha + "T00:00:00").toLocaleDateString(
+          "es-AR",
+          {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }
+        );
 
         const filas = lista
           .map((t) => {
@@ -100,13 +161,21 @@ document.addEventListener("DOMContentLoaded", () => {
             return `
               <tr>
                 <td>${t.id}</td>
-                <td>${medico ? medico.nombre + " " + medico.apellido : "Desconocido"}</td>
+                <td>${
+                  medico ? medico.nombre + " " + medico.apellido : "Desconocido"
+                }</td>
                 <td>${t.fechaHora.slice(11, 16)} hs</td>
-                <td class="${t.disponible ? "text-success fw-semibold" : "text-danger fw-semibold"}">
+                <td class="${
+                  t.disponible
+                    ? "text-success fw-semibold"
+                    : "text-danger fw-semibold"
+                }">
                   ${t.disponible ? "Disponible" : "Reservado"}
                 </td>
                 <td>
-                  <button class="btn btn-sm btn-danger" onclick="eliminarTurno(${t.id})">Eliminar</button>
+                  <button class="btn btn-sm btn-danger" onclick="eliminarTurno(${
+                    t.id
+                  })">Eliminar</button>
                 </td>
               </tr>
             `;
@@ -128,7 +197,11 @@ document.addEventListener("DOMContentLoaded", () => {
       // Eliminar reservas asociadas
       let reservas = JSON.parse(localStorage.getItem("reservas") || "[]");
       reservas = reservas.filter(
-        (r) => !(r.fechaHora === turnoEliminado.fechaHora && r.medicoId === turnoEliminado.medico)
+        (r) =>
+          !(
+            r.fechaHora === turnoEliminado.fechaHora &&
+            r.medicoId === turnoEliminado.medico
+          )
       );
       localStorage.setItem("reservas", JSON.stringify(reservas));
 
@@ -143,7 +216,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.borrarTodosLosTurnos = function () {
-  if (confirm("¿Estás segura de que querés borrar todos los turnos y sus reservas asociadas?")) {
+  if (
+    confirm(
+      "¿Estás segura de que querés borrar todos los turnos y sus reservas asociadas?"
+    )
+  ) {
     // Borrar turnos
     localStorage.removeItem("turnos");
     window.turnos = [];

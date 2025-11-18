@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
           <div class="col-md-6">
             <label class="form-label" for="nuevoFoto">Foto del médico:</label>
-            <input type="file" id="nuevoFoto" class="form-control" accept="image/*">
+            <input type="file" id="nuevoFoto" required class="form-control" accept="image/*">
           </div>
 
 
@@ -190,9 +190,12 @@ document.addEventListener("DOMContentLoaded", () => {
           valorConsulta,
           foto: localStorage.getItem("base64"),
         };
+        /* console.log(nuevoMedico);
+        alert('oausa'); */
         localStorage.removeItem("base64");
         medicosStorage.push(nuevoMedico);
         localStorage.setItem("medicos", JSON.stringify(medicosStorage));
+        generarAgendaTurnos(nuevoMedico,'nuevo');
         document.getElementById("formMedicoCard").remove();
         mostrarMedicos();
       });
@@ -354,7 +357,7 @@ function fotoABase64(foto) {
   foto.addEventListener("change", function (event) {
     const read = new FileReader();
     read.onloadend = () => {
-      console.log(read.result);
+      
       localStorage.setItem("base64", read.result);
     };
 
